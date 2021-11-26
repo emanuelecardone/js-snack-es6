@@ -29,6 +29,9 @@ main{
 .slider_arrows_wrapper{
     bottom: 10%;
 }
+[class*="fa-arrow-circle-"]{
+    cursor: pointer;
+}
 .planet_infos_wrapper span{
     line-height: 2rem;
 }
@@ -36,6 +39,18 @@ main{
     display: none;
 }
 .big_img.active{
+    display: block;
+}
+.list_key_item{
+    display: none;
+}
+.list_key_item.active{
+    display: list-item;
+}
+.main_planet_title{
+    display: none;
+}
+.main_planet_title.active{
     display: block;
 }
 
