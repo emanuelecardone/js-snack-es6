@@ -36,28 +36,28 @@ const bicyclesArray = [
 // Destrutturazione array
 const [bikeOne, bikeTwo, bikeThree, bikeFour, bikeFive] = bicyclesArray;
 
-// Variabili flag per individuare il peso maggiore e stampare il relativo nome
-let currentBiggestWeight = bikeOne.weight;
-let currentBikeWithBiggestWeight = bikeOne;
+// Variabili flag per individuare il peso minore e stampare il relativo nome
+let currentLowestWeight = bikeOne.weight;
+let currentBikeWithLowestWeight = bikeOne;
 
-// Ciclo che percorre l'array e destrutturando l'oggetto, inquadra il peso maggiore e la bici corrispondente
+// Ciclo che percorre l'array e destrutturando l'oggetto, inquadra il peso minore e la bici corrispondente
 for(let i = 0; i < bicyclesArray.length; i++){
     
     const currentBike = bicyclesArray[i];
     
     const {name, weight} = currentBike;
 
-    if(weight > currentBiggestWeight){
-        currentBiggestWeight = weight;
-        currentBikeWithBiggestWeight = currentBike;
+    if(weight < currentLowestWeight){
+        currentLowestWeight = weight;
+        currentBikeWithLowestWeight = currentBike;
     }
 
 }
 
 // Inserimento in pagina
 textContainer.innerHTML = `
-    <span class="text-success text-center fw-bold">La bici con peso maggiore è: ${currentBikeWithBiggestWeight.name}<br>
-        Peso: ${currentBiggestWeight}
+    <span class="text-success text-center fw-bold">La bici con peso minore è: ${currentBikeWithLowestWeight.name}<br>
+        Peso: ${currentLowestWeight}
     </span>
 `;
 
