@@ -188,19 +188,65 @@ fillingContainersUp(solarSystem, activeObject);
 const numberOfKeys = getKeysAmount(solarSystem[activeObject]);
     
 // Immagine active
-const activeImage = document.getElementsByClassName('big_img')[activeObject];
-activeImage.classList.add('active');
+document.getElementsByClassName('big_img')[activeObject].classList.add('active');
 // Titolo nome pianeta active
-const activeTitle = document.getElementsByClassName('main_planet_title')[activeObject];
-activeTitle.classList.add('active');
+document.getElementsByClassName('main_planet_title')[activeObject].classList.add('active');
 // "li" active
 for(let i = 0; i < numberOfKeys - 1; i++){
-    const currentActiveLi = document.getElementsByClassName(`li_${activeObject}`)[i];
-    currentActiveLi.classList.add('active');
+    document.getElementsByClassName(`li_${activeObject}`)[i].classList.add('active');
 }
 // Info active
-const activeInfo = document.getElementsByClassName('info_text')[activeObject];
-activeInfo.classList.add('active');
+document.getElementsByClassName('info_text')[activeObject].classList.add('active');
+
+
+
+// SEZIONE SLIDER
+// Left arrow
+sliderLeftArrow.addEventListener('click', function(){
+
+    document.getElementsByClassName('big_img')[activeObject].classList.remove('active');
+    document.getElementsByClassName('main_planet_title')[activeObject].classList.remove('active');
+    for(let i = 0; i < numberOfKeys - 1; i++){
+        document.getElementsByClassName(`li_${activeObject}`)[i].classList.remove('active');
+    }
+    document.getElementsByClassName('info_text')[activeObject].classList.remove('active');
+
+    activeObject = (activeObject > 0) ? activeObject - 1 : activeObject = solarSystem.length - 1;
+    
+    document.getElementsByClassName('big_img')[activeObject].classList.add('active');
+    document.getElementsByClassName('main_planet_title')[activeObject].classList.add('active');
+    for(let i = 0; i < numberOfKeys - 1; i++){
+        document.getElementsByClassName(`li_${activeObject}`)[i].classList.add('active');
+    }
+    document.getElementsByClassName('info_text')[activeObject].classList.add('active');
+    
+});
+
+// Right arrow
+sliderRightArrow.addEventListener('click', function(){
+
+    document.getElementsByClassName('big_img')[activeObject].classList.remove('active');
+    document.getElementsByClassName('main_planet_title')[activeObject].classList.remove('active');
+    for(let i = 0; i < numberOfKeys - 1; i++){
+        document.getElementsByClassName(`li_${activeObject}`)[i].classList.remove('active');
+    }
+    document.getElementsByClassName('info_text')[activeObject].classList.remove('active');
+
+    activeObject = (activeObject < solarSystem.length - 1) ? activeObject + 1 : activeObject = 0;
+    
+    document.getElementsByClassName('big_img')[activeObject].classList.add('active');
+    document.getElementsByClassName('main_planet_title')[activeObject].classList.add('active');
+    for(let i = 0; i < numberOfKeys - 1; i++){
+        document.getElementsByClassName(`li_${activeObject}`)[i].classList.add('active');
+    }
+    document.getElementsByClassName('info_text')[activeObject].classList.add('active');
+});
+
+
+
+
+
+
 
 
 
@@ -255,12 +301,12 @@ function fillingContainersUp(ListOfPlanets, thisObject){
         const {name} = currentPlanet;
 
         // AGGIUNTA TITOLO NOME PIANETA
-        planetTitleContainer.innerHTML += `
-            <h1 class="main_planet_title fw-bold">
-                ${name}
-            </h1>    
-        `;
-        
+        const currentPlanetTitle = document.createElement('h1');
+        currentPlanetTitle.classList.add('main_planet_title', 'fw-bold');
+        currentPlanetTitle.innerText = name;
+        planetTitleContainer.appendChild(currentPlanetTitle);
+            
+        console.log(document.getElementsByClassName('main_planet_title')[i]);
     
         // AGGIUNTA KEYS NELLA UL 
         
