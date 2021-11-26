@@ -17,7 +17,7 @@ const pageHeader = document.querySelector('header');
 
 // MAIN
 const pageMain = document.querySelector('main');
-// Container titolo, container immagine, immagine, container keys, container infos, container arrows, arrows
+// Container titolo, container immagini, immagini, container keys, container infos, container arrows, arrows
 // Variabili
 const planetTitleContainer = document.createElement('div');
 const planetImageContainer = document.createElement('div');
@@ -27,11 +27,8 @@ const sliderArrowsContainer = document.createElement('div');
 const sliderLeftArrow = document.createElement('i');
 const sliderMiddleTitle = document.createElement('h4');
 const sliderRightArrow = document.createElement('i');
-const planetImage = document.createElement('img');
 
-// Attributi immagine (da completare dopo quando aggiungo le altre)
-planetImage.src = 'img/mercurio.png';
-planetImage.alt = 'Immagine di Mercurio';
+
 
 // Classi di stile
 sliderLeftArrow.classList.add('fs-1', 'text-white', 'fw-bolder', 'fas', 'fa-arrow-circle-left');
@@ -40,7 +37,6 @@ sliderRightArrow.classList.add('fs-1', 'text-white', 'fw-bolder', 'fas', 'fa-arr
 sliderArrowsContainer.classList.add('slider_arrows_wrapper', 'w-25', 'h_10', 'd-flex', 'justify-content-between', 'align-items-center', 'position-absolute');
 planetTitleContainer.classList.add('planet_title_wrapper', 'w-25', 'h_10', 'd-flex', 'justify-content-center', 'align-items-center', 'position-absolute', 'fs-1', 'text-white', 'fw-bolder');
 planetImageContainer.classList.add('w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
-planetImage.classList.add('img-fluid');
 planetKeysContainer.classList.add('w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
 planetInfosContainer.classList.add('planet_infos_wrapper', 'w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center', 'text-center', 'text-white', 'fw-bolder')
 
@@ -49,7 +45,7 @@ sliderMiddleTitle.innerHTML = 'see more';
 
 // Inserimento in pagina
 pageMain.append(planetInfosContainer, planetTitleContainer, planetImageContainer, sliderArrowsContainer, planetKeysContainer);
-planetImageContainer.appendChild(planetImage);
+
 sliderArrowsContainer.append(sliderLeftArrow, sliderMiddleTitle, sliderRightArrow);
 
 // FOOTER
@@ -126,43 +122,103 @@ const solarSystem = [
 
 
 // TEST
-let activeObject = 0;
-const currentPlanet = solarSystem[activeObject];
-planetTitleContainer.innerHTML = currentPlanet.name;
-
-const numberOfKeys = getKeysAmount(currentPlanet);
-console.log(numberOfKeys);
-
-const keysList = document.createElement('ul');
-keysList.classList.add('ps-0', 'mb-0', 'text-center', 'text-white', 'fw-bold');
-planetKeysContainer.appendChild(keysList);
-
-const fixedNamesList = getKeysLayoutName(currentPlanet);
 
 
-// Il giro parte da dopo name perché il name non fa parte della ul quindi deve saltarlo
-// mi serve un counter parallelo per gestire anche l'array di nomi fixati
-// Il counter dell'array può partire da 0 perché non contiene "name"
-let fixedNamesCounter = 0;
-for(let key in currentPlanet){
-    if(!(key === 'name')){
+// Richiamo funzione per immagini
+fillingContainersUp(solarSystem);
 
-        const currentKey = currentPlanet[key];
-        const currentKeyListObject = document.createElement('li');
-        currentKeyListObject.classList.add('mb-2');
-        const currentFixedName = fixedNamesList[fixedNamesCounter]; 
-        currentKeyListObject.innerHTML = `${currentFixedName}: ${currentKey}`;
-        keysList.appendChild(currentKeyListObject);
-        fixedNamesCounter++;
+
+
+
+
+// Questa funzione aggiungerà anche il resto delle cose più avanti)
+function fillingContainersUp(ListOfPlanets){
+
+
+
+    // Aggiunta immagini
+    for(let i = 0; i < ListOfPlanets.length; i++){
+
+        let currentSourceName;
+        const currentPlanetImage = document.createElement('img');
+        switch(i){
+            case 0:
+                currentSourceName = 'mercurio';
+                break;
+            case 1:
+                currentSourceName = 'venere';
+                break;
+            case 2:
+                currentSourceName = 'terra';
+                break;
+            case 3:
+                currentSourceName = 'marte';
+                break;
+            case 4:
+                currentSourceName = 'giove';
+                break;
+            case 5:
+                currentSourceName = 'saturno';
+                break;
+            case 6:
+                currentSourceName = 'urano';
+                break;
+            case 7:
+                currentSourceName = 'nettuno';
+                break;                            
+        }
+        currentPlanetImage.src = `img/${currentSourceName}.png`;
+        currentPlanetImage.alt = `Immagine di ${currentSourceName}`;
+        currentPlanetImage.classList.add('img-fluid', 'big_img', `${currentSourceName}_img`);
+        planetImageContainer.appendChild(currentPlanetImage);
     }
+
+
+
+    let activeObject = 0;
+    const currentPlanet = solarSystem[activeObject];
+    planetTitleContainer.innerHTML = currentPlanet.name;
+
+    // Immagine active
+    document.getElementsByClassName('big_img')[activeObject].classList.add('active');
+
+    const numberOfKeys = getKeysAmount(currentPlanet);
+    console.log(numberOfKeys);
+
+    const keysList = document.createElement('ul');
+    keysList.classList.add('ps-0', 'mb-0', 'text-center', 'text-white', 'fw-bold');
+    planetKeysContainer.appendChild(keysList);
+
+    const fixedNamesList = getKeysLayoutName(currentPlanet);
+
+
+    // Il giro parte da dopo name perché il name non fa parte della ul quindi deve saltarlo
+    // mi serve un counter parallelo per gestire anche l'array di nomi fixati
+    // Il counter dell'array può partire da 0 perché non contiene "name"
+    let fixedNamesCounter = 0;
+    for(let key in currentPlanet){
+        if(!(key === 'name')){
+
+            const currentKey = currentPlanet[key];
+            const currentKeyListObject = document.createElement('li');
+            currentKeyListObject.classList.add('mb-2');
+            const currentFixedName = fixedNamesList[fixedNamesCounter]; 
+            currentKeyListObject.innerHTML = `${currentFixedName}: ${currentKey}`;
+            keysList.appendChild(currentKeyListObject);
+            fixedNamesCounter++;
+        }
+    }
+
+    // Riempimento sezione infos (da rendere invisibile e disponibile solo al click più tardi)
+    planetInfosContainer.innerHTML = `
+    <span>
+        Mercury is the smallest planet in the Solar System and the closest to the Sun. Its orbit around the Sun takes 87.97 Earth days, the shortest of all the Sun\'s planets. It is named after the Roman god Mercurius (Mercury), god of commerce, messenger of the gods, and mediator between gods and mortals, corresponding to the Greek god Hermes.
+    </span>
+    `;
+
+    
 }
 
-// Riempimento sezione infos (da rendere invisibile e disponibile solo al click più tardi)
-planetInfosContainer.innerHTML = `
-<span>
-    Mercury is the smallest planet in the Solar System and the closest to the Sun. Its orbit around the Sun takes 87.97 Earth days, the shortest of all the Sun\'s planets. It is named after the Roman god Mercurius (Mercury), god of commerce, messenger of the gods, and mediator between gods and mortals, corresponding to the Greek god Hermes.
-</span>
-`;
 
 
 

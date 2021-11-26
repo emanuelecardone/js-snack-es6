@@ -32,6 +32,12 @@ main{
 .planet_infos_wrapper span{
     line-height: 2rem;
 }
+.big_img{
+    display: none;
+}
+.big_img.active{
+    display: block;
+}
 
 
 /* FOOTER */
