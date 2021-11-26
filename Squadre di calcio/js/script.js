@@ -6,66 +6,63 @@
 // Infine usando la destrutturazione creiamo un nuovo array i cui elementi contengono solo nomi e falli subiti e stampiamo tutto in console.
 
 
-// Creo una base molto semplice nel DOM per stampare
-const textContainer = document.createElement('div');
-textContainer.classList.add('w-50', 'h-50', 'border', 'border-5', 'border-info', 'd-flex', 'justify-content-center', 'align-items-center');
-document.querySelector('body').classList.add('vh-100', 'd-flex', 'justify-content-center', 'align-items-center');
-document.querySelector('body').appendChild(textContainer);
-
-
 // Array di squadre di calcio
 const footballTeams = [
     {
         name: 'Roma',
         score: 0,
-        fouls: 0
+        foulsGot: 0
     },
     {
         name: 'Napoli',
         score: 0,
-        fouls: 0
+        foulsGot: 0
     },
     {
         name: 'Ascoli',
         score: 0,
-        fouls: 0
+        foulsGot: 0
     },
     {
         name: 'Juventus',
         score: 0,
-        fouls: 0
+        foulsGot: 0
     },
     {
         name: 'Milan',
         score: 0,
-        fouls: 0
+        foulsGot: 0
     },
     {
         name: 'Chievo',
         score: 0,
-        fouls: 0
+        foulsGot: 0
     },
     {
         name: 'Inter',
         score: 0,
-        fouls: 0
+        foulsGot: 0
     },
     {
         name: 'Venezia',
         score: 0,
-        fouls: 0
+        foulsGot: 0
     },
     {
         name: 'Lazio',
         score: 0,
-        fouls: 0
+        foulsGot: 0
     },
     {
         name: 'Torino',
         score: 0,
-        fouls: 0
+        foulsGot: 0
     }
 ];
+
+// Creo un array vuoto in cui metterò ogni squadra con nome e falli
+// Evito la copia diretta con lo spread per usare meglio la destrutturazione
+const footballTeamsCopy = [];
 
 // Ciclo che scorre ogni squadra dell'array
 for(let i = 0; i < footballTeams.length; i++){
@@ -74,18 +71,29 @@ for(let i = 0; i < footballTeams.length; i++){
     const currentTeam = footballTeams[i];
 
     // Ciclo for in che percorre la squadra corrente e modifica
-    // score e fouls con numeri random (0-90 per score, 0-200 per fouls)
+    // score e foulsGot con numeri random (0-90 per score, 0-200 per foulsGot)
     for(let key in currentTeam){
         switch(key){
             case 'score':
                 currentTeam.score = Math.floor(Math.random() * 91) + 0;
                 break;
-            case 'fouls':
-                currentTeam.fouls = Math.floor(Math.random() * 201) + 0;
+            case 'foulsGot':
+                currentTeam.foulsGot = Math.floor(Math.random() * 201) + 0;
                 break;     
         }
     }
+
+    // Destrutturazione oggetto originale
+    const {name, score, foulsGot} = currentTeam;
+
+    // Creazione copia oggetto senza "score"
+    const currentTeamCopy = {name, foulsGot};
+
+    // Inserimento oggetto copiato nel nuovo array
+    footballTeamsCopy.push(currentTeamCopy);
+
 }
 
-// Test
+// Stampo in console team originale e copiato
 console.log(footballTeams);
+console.log(footballTeamsCopy);
