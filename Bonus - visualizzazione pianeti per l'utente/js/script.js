@@ -18,6 +18,26 @@ const pageHeader = document.querySelector('header');
 // MAIN
 const pageMain = document.querySelector('main');
 
+const planetTitleContainer = document.createElement('div');
+const planetImageContainer = document.createElement('div');
+const planetKeysContainer = document.createElement('div');
+const planetInfosContainer = document.createElement('div');
+
+
+const planetImage = document.createElement('img');
+planetImage.src = 'img/mercurio.png';
+planetImage.alt = 'Immagine di Mercurio';
+
+planetTitleContainer.classList.add('planet_title_wrapper', 'border', 'border-5', 'border-white', 'w-25', 'h_10', 'd-flex', 'justify-content-center', 'align-items-center', 'position-absolute');
+planetImageContainer.classList.add('w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
+planetImage.classList.add('img-fluid');
+planetKeysContainer.classList.add('border', 'border-5', 'border-white', 'w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
+planetInfosContainer.classList.add('border', 'border-5', 'border-white', 'w-25', 'h-25', 'd-flex', 'justify-content-center', 'align-items-center')
+
+
+pageMain.append(planetInfosContainer, planetTitleContainer, planetImageContainer, planetKeysContainer);
+planetImageContainer.appendChild(planetImage);
+
 // FOOTER
 const pageFooter = document.querySelector('footer');
 

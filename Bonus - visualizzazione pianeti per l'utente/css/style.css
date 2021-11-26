@@ -20,6 +20,9 @@
 main{
     height: calc(100vh - 250px);
 }
+.planet_title_wrapper{
+    top: 10%;
+}
 
 
 /* FOOTER */
