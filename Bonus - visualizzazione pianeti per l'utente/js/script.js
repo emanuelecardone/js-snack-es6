@@ -36,7 +36,7 @@ planetImage.alt = 'Immagine di Mercurio';
 sliderLeftArrow.classList.add('fs-1', 'text-white', 'fw-bolder', 'fas', 'fa-arrow-circle-left');
 sliderRightArrow.classList.add('fs-1', 'text-white', 'fw-bolder', 'fas', 'fa-arrow-circle-right');
 sliderArrowsContainer.classList.add('slider_arrows_wrapper', 'border', 'border-5', 'border-white', 'w-25', 'h_10', 'd-flex', 'justify-content-between', 'align-items-center', 'position-absolute');
-planetTitleContainer.classList.add('planet_title_wrapper', 'border', 'border-5', 'border-white', 'w-25', 'h_10', 'd-flex', 'justify-content-center', 'align-items-center', 'position-absolute');
+planetTitleContainer.classList.add('planet_title_wrapper', 'border', 'border-5', 'border-white', 'w-25', 'h_10', 'd-flex', 'justify-content-center', 'align-items-center', 'position-absolute', 'fs-1', 'text-white', 'fw-bolder');
 planetImageContainer.classList.add('w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
 planetImage.classList.add('img-fluid');
 planetKeysContainer.classList.add('border', 'border-5', 'border-white', 'w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
@@ -118,3 +118,76 @@ const solarSystem = [
         orbitalSpeed: 5.478
     }
 ];
+
+
+// TEST
+let activeObject = 0;
+const currentPlanet = solarSystem[activeObject];
+planetTitleContainer.innerHTML = currentPlanet.name;
+
+const numberOfKeys = getKeysAmount(currentPlanet);
+console.log(numberOfKeys);
+
+const keysList = document.createElement('ul');
+keysList.classList.add('ps-0', 'mb-0', 'text-center', 'text-white', 'fw-bold');
+planetKeysContainer.appendChild(keysList);
+
+const fixedNamesList = getKeysLayoutName(currentPlanet);
+
+
+// Il giro parte da dopo name perché il name non fa parte della ul quindi deve saltarlo
+// mi serve un counter parallelo per gestire anche l'array di nomi fixati
+// Il counter dell'array può partire da 0 perché non contiene "name"
+let fixedNamesCounter = 0;
+for(let key in currentPlanet){
+    if(!(key === 'name')){
+
+        const currentKey = currentPlanet[key];
+        const currentKeyListObject = document.createElement('li');
+        const currentFixedName = fixedNamesList[fixedNamesCounter]; 
+        currentKeyListObject.innerHTML = `${currentFixedName}: ${currentKey}`;
+        keysList.appendChild(currentKeyListObject);
+        fixedNamesCounter++;
+    }
+}
+
+
+// Ritorna numero chiavi (da descrivere bene dopo)
+function getKeysAmount (currentObject){
+    let keysAmount = 0;
+    for(let key in currentObject){
+        keysAmount++;
+    }
+    return keysAmount;
+}
+
+// Fixa il nome delle keys per evitare il camelCase in pagina (da descrivere bene dopo)
+// Il name non serve
+function getKeysLayoutName (currentObject){
+    const fixedNames = [];
+    for(let key in currentObject){
+        let currentName; 
+        switch(key){
+            case 'temperature':
+                currentName = 'Temperature';
+                break;
+            case 'satellites':
+                currentName = 'Satellites';
+                break;
+            case 'equatorialDiameter':
+                currentName = 'Equatorial Diameter'
+                break;
+            case 'orbitalPeriod':
+                currentName = 'Orbital period'
+                break;
+            case 'orbitalSpeed':
+                currentName = 'Orbital speed'
+                break;            
+        }
+        if(!(key === 'name')){
+            fixedNames.push(currentName);
+        }
+    }
+    return fixedNames;
+}
+

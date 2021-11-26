@@ -13,6 +13,9 @@
 .green_sky_bg{
     background-image: url(../img/green.jpg);
 }
+ul{
+    list-style-type: none;
+}
 
 /* HEADER */
 
