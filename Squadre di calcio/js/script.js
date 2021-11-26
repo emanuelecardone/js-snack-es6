@@ -13,4 +13,79 @@ document.querySelector('body').classList.add('vh-100', 'd-flex', 'justify-conten
 document.querySelector('body').appendChild(textContainer);
 
 
+// Array di squadre di calcio
+const footballTeams = [
+    {
+        name: 'Roma',
+        score: 0,
+        fouls: 0
+    },
+    {
+        name: 'Napoli',
+        score: 0,
+        fouls: 0
+    },
+    {
+        name: 'Ascoli',
+        score: 0,
+        fouls: 0
+    },
+    {
+        name: 'Juventus',
+        score: 0,
+        fouls: 0
+    },
+    {
+        name: 'Milan',
+        score: 0,
+        fouls: 0
+    },
+    {
+        name: 'Chievo',
+        score: 0,
+        fouls: 0
+    },
+    {
+        name: 'Inter',
+        score: 0,
+        fouls: 0
+    },
+    {
+        name: 'Venezia',
+        score: 0,
+        fouls: 0
+    },
+    {
+        name: 'Lazio',
+        score: 0,
+        fouls: 0
+    },
+    {
+        name: 'Torino',
+        score: 0,
+        fouls: 0
+    }
+];
 
+// Ciclo che scorre ogni squadra dell'array
+for(let i = 0; i < footballTeams.length; i++){
+
+    // Assegnazione della squadra corrente ad una variabile
+    const currentTeam = footballTeams[i];
+
+    // Ciclo for in che percorre la squadra corrente e modifica
+    // score e fouls con numeri random (0-90 per score, 0-200 per fouls)
+    for(let key in currentTeam){
+        switch(key){
+            case 'score':
+                currentTeam.score = Math.floor(Math.random() * 91) + 0;
+                break;
+            case 'fouls':
+                currentTeam.fouls = Math.floor(Math.random() * 201) + 0;
+                break;     
+        }
+    }
+}
+
+// Test
+console.log(footballTeams);
