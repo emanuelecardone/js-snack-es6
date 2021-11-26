@@ -1,24 +1,36 @@
 // Obiettivi
 //
-// Creare uno slider a scorrimento contenente tutti i pianeti del sistema solare (preso spunto da un esercizio a lezione)
-// Per ogni pianeta, verranno visualizzati: nome, temperatura, satelliti, diametro equatoriale, periodo orbitale e velocità orbitale
-// L'utente ha la possibilità di scorrere i pianeti e visualizzare ogni caratteristica di essi 
-// Vedendo anche stampata una foto in pagina che corrisponde al pianeta attivo
-// Ci sarà poi una lista dei pianeti più piccola in alto, e anche lì l'active sarà evidenziato
-// Ci saranno 3 sfondi diversi a tema spazio, l'utente potrà cambiare sfondo quando vuole
-// Ogni pianeta deve avere una sezione "About" che appare/scompare al click nella quale si parla del pianeta con info aggiunte
-// L'utente può cambiare nome a ciascun pianeta attivo quando vuole
+// (V) Creare uno slider a scorrimento contenente tutti i pianeti del sistema solare (preso spunto da un esercizio a lezione)
+// (V) Per ogni pianeta, verranno visualizzati: nome, temperatura, satelliti, diametro equatoriale, periodo orbitale e velocità orbitale
+// (V) L'utente ha la possibilità di scorrere i pianeti e visualizzare ogni caratteristica di essi 
+// (V) Vedendo anche stampata una foto in pagina che corrisponde al pianeta attivo
+// (X) Ci sarà poi una lista dei pianeti più piccola in alto, e anche lì l'active sarà evidenziato
+// (X) Ci saranno 3 sfondi diversi a tema spazio, l'utente potrà cambiare sfondo quando vuole
+// (X) Ogni pianeta deve avere una sezione "About" che appare/scompare al click nella quale si parla del pianeta con info aggiunte
+// (X) L'utente può cambiare nome a ciascun pianeta attivo quando vuole
                                 
 
-// INIZIO 
+// INIZIO
+
+// BODY
+const pageBody = document.querySelector('body');
 
 // HEADER
 const pageHeader = document.querySelector('header');
 
 // MAIN
 const pageMain = document.querySelector('main');
-// Container titolo, container immagini, immagini, container keys, container infos, container arrows, arrows
+// Container change theme, change theme, container titolo, container immagini, immagini
+// container keys, ul keys, container infos, container arrows, arrows
 // Variabili
+const changeThemeContainer = document.createElement('div');
+const changeThemeTitle = document.createElement('h4');
+const changeThemeColorsContainer = document.createElement('div');
+const changeThemeFluidContainer = document.createElement('div');
+const changeThemeColorsRow = document.createElement('div');
+const changeThemeBlueButton = document.createElement('button');
+const changeThemePurpleButton = document.createElement('button');
+const changeThemeGreenButton = document.createElement('button');
 const planetTitleContainer = document.createElement('div');
 const planetImageContainer = document.createElement('div');
 const planetKeysContainer = document.createElement('div');
@@ -29,11 +41,17 @@ const sliderLeftArrow = document.createElement('i');
 const sliderMiddleTitle = document.createElement('h4');
 const sliderRightArrow = document.createElement('i');
 
-
-
 // Classi di stile
+changeThemeContainer.classList.add('change_theme_wrapper', 'w-25', 'h_10', 'd-flex', 'flex-column', 'justify-content-between', 'align-items-center', 'position-absolute')
+changeThemeTitle.classList.add('change_theme_title', 'fs-4', 'text-white', 'text-center', 'text-uppercase', 'mb-0', 'fw-bolder');
+changeThemeColorsContainer.classList.add('change_theme_colors_wrapper', 'w_80', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
+changeThemeFluidContainer.classList.add('container-fluid', 'h-100');
+changeThemeColorsRow.classList.add('row', 'row-cols-3', 'h-100');
+changeThemeBlueButton.classList.add('btn', 'blue_button', 'w-100', 'h-100', 'p-0', 'text-white', 'fs_10', 'fw-bolder', 'text-uppercase', 'text-center', 'blue_sky_bg');
+changeThemePurpleButton.classList.add('btn', 'purple_button', 'w-100', 'h-100', 'p-0', 'text-white', 'fs_10', 'fw-bolder', 'text-uppercase', 'text-center', 'purple_sky_bg');
+changeThemeGreenButton.classList.add('btn', 'green_button', 'w-100', 'h-100', 'p-0', 'text-white', 'fs_10', 'fw-bolder', 'text-uppercase', 'text-center', 'green_sky_bg');
 sliderLeftArrow.classList.add('fs-1', 'text-white', 'fw-bolder', 'fas', 'fa-arrow-circle-left');
-sliderMiddleTitle.classList.add('fs-4', 'text-white', 'fw-bolder', 'text-uppercase', 'mb-0');
+sliderMiddleTitle.classList.add('fs-4', 'text-white', 'fw-bolder', 'text-uppercase', 'mb-0', 'text-center');
 sliderRightArrow.classList.add('fs-1', 'text-white', 'fw-bolder', 'fas', 'fa-arrow-circle-right');
 sliderArrowsContainer.classList.add('slider_arrows_wrapper', 'w-25', 'h_10', 'd-flex', 'justify-content-between', 'align-items-center', 'position-absolute');
 planetTitleContainer.classList.add('planet_title_wrapper', 'w-25', 'h_10', 'd-flex', 'justify-content-center', 'align-items-center', 'position-absolute', 'fs-1', 'text-white', 'fw-bolder');
@@ -43,10 +61,36 @@ keysList.classList.add('ps-0', 'mb-0', 'text-center', 'text-white', 'fw-bold');
 planetInfosContainer.classList.add('planet_infos_wrapper', 'w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center', 'text-center', 'text-white', 'fw-bolder')
 
 // Contenuto
-sliderMiddleTitle.innerHTML = 'see more';
+changeThemeTitle.innerText = 'change theme';
+sliderMiddleTitle.innerText = 'see more';
+changeThemeBlueButton.innerText = 'blue';
+changeThemePurpleButton.innerText = 'purple';
+changeThemeGreenButton.innerText = 'green';
 
 // Inserimento in pagina
-pageMain.append(planetInfosContainer, planetTitleContainer, planetImageContainer, sliderArrowsContainer, planetKeysContainer);
+pageMain.append(changeThemeContainer, planetInfosContainer, planetTitleContainer, planetImageContainer, sliderArrowsContainer, planetKeysContainer);
+changeThemeContainer.append(changeThemeTitle, changeThemeColorsContainer);
+changeThemeColorsContainer.appendChild(changeThemeFluidContainer);
+changeThemeFluidContainer.appendChild(changeThemeColorsRow);
+for(let i = 0; i < 3; i++){
+    const currentCol = document.createElement('div');
+    const currentButtonContainer = document.createElement('div');
+    currentCol.classList.add('col');
+    currentButtonContainer.classList.add('w-100', 'h-100','d-flex', 'justify-content-center', 'align-items-center');
+    changeThemeColorsRow.appendChild(currentCol);
+    currentCol.appendChild(currentButtonContainer);
+    switch(i){
+        case 0:
+            currentButtonContainer.appendChild(changeThemeBlueButton);
+            break;
+        case 1:
+            currentButtonContainer.appendChild(changeThemePurpleButton);
+            break;
+        case 2:
+            currentButtonContainer.appendChild(changeThemeGreenButton);        
+            break;
+    }
+}
 planetKeysContainer.appendChild(keysList);
 sliderArrowsContainer.append(sliderLeftArrow, sliderMiddleTitle, sliderRightArrow);
 
@@ -145,7 +189,7 @@ const earthInfo = `
 // Marte
 const marsInfo = `
     <span class="info_text">
-        The high amounts of iron in its soil causes a red-orange color, which is why it is known as "the red planet". In Roman mythology, Mars was the god of war (taken from Greek mythology, Ares, the god of war) it is thought that the planet received this god's name because of its red color. 
+        Mars is a terrestrial planet, and is the fourth planet from the Sun. The high amounts of iron in its soil causes a red-orange color, which is why it is known as "the red planet". In Roman mythology, Mars was the god of war (taken from Greek mythology, Ares, the god of war) it is thought that the planet received this god's name because of its red color. 
     </span>
 `;
 // Giove
@@ -197,6 +241,27 @@ for(let i = 0; i < numberOfKeys - 1; i++){
 }
 // Info active
 document.getElementsByClassName('info_text')[activeObject].classList.add('active');
+
+
+
+// SEZIONE CHANGE THEME
+// Blue button 
+changeThemeBlueButton.addEventListener('click', function(){
+    pageBody.classList.remove('purple_sky_bg', 'green_sky_bg');
+    pageBody.classList.add('blue_sky_bg');
+});
+// Purple button
+changeThemePurpleButton.addEventListener('click', function(){
+    pageBody.classList.remove('blue_sky_bg', 'green_sky_bg');
+    pageBody.classList.add('purple_sky_bg');
+});
+// Green button
+changeThemeGreenButton.addEventListener('click', function(){
+    pageBody.classList.remove('purple_sky_bg', 'blue_sky_bg');
+    pageBody.classList.add('green_sky_bg');
+});
+
+
 
 
 

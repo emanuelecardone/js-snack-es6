@@ -16,12 +16,19 @@
 ul{
     list-style-type: none;
 }
+.btn:focus{
+    box-shadow: none;
+}
 
 /* HEADER */
 
 /* MAIN */
 main{
     height: calc(100vh - 250px);
+}
+.change_theme_wrapper{
+    top: 10%;
+    left: 5%;
 }
 .planet_title_wrapper{
     top: 10%;
