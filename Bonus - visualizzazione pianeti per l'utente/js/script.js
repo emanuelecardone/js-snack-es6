@@ -17,26 +17,35 @@ const pageHeader = document.querySelector('header');
 
 // MAIN
 const pageMain = document.querySelector('main');
-
+// Container titolo, container immagine, immagine, container keys, container infos, container arrows, arrows
+// Variabili
 const planetTitleContainer = document.createElement('div');
 const planetImageContainer = document.createElement('div');
 const planetKeysContainer = document.createElement('div');
 const planetInfosContainer = document.createElement('div');
-
-
+const sliderArrowsContainer = document.createElement('div');
+const sliderLeftArrow = document.createElement('i');
+const sliderRightArrow = document.createElement('i');
 const planetImage = document.createElement('img');
+
+// Attributi immagine (da completare dopo quando aggiungo le altre)
 planetImage.src = 'img/mercurio.png';
 planetImage.alt = 'Immagine di Mercurio';
 
+// Classi di stile
+sliderLeftArrow.classList.add('fs-1', 'text-white', 'fw-bolder', 'fas', 'fa-arrow-circle-left');
+sliderRightArrow.classList.add('fs-1', 'text-white', 'fw-bolder', 'fas', 'fa-arrow-circle-right');
+sliderArrowsContainer.classList.add('slider_arrows_wrapper', 'border', 'border-5', 'border-white', 'w-25', 'h_10', 'd-flex', 'justify-content-between', 'align-items-center', 'position-absolute');
 planetTitleContainer.classList.add('planet_title_wrapper', 'border', 'border-5', 'border-white', 'w-25', 'h_10', 'd-flex', 'justify-content-center', 'align-items-center', 'position-absolute');
 planetImageContainer.classList.add('w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
 planetImage.classList.add('img-fluid');
 planetKeysContainer.classList.add('border', 'border-5', 'border-white', 'w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
 planetInfosContainer.classList.add('border', 'border-5', 'border-white', 'w-25', 'h-25', 'd-flex', 'justify-content-center', 'align-items-center')
 
-
-pageMain.append(planetInfosContainer, planetTitleContainer, planetImageContainer, planetKeysContainer);
+// Inserimento in pagina
+pageMain.append(planetInfosContainer, planetTitleContainer, planetImageContainer, sliderArrowsContainer, planetKeysContainer);
 planetImageContainer.appendChild(planetImage);
+sliderArrowsContainer.append(sliderLeftArrow, sliderRightArrow);
 
 // FOOTER
 const pageFooter = document.querySelector('footer');
