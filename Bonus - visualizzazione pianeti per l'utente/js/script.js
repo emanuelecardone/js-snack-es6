@@ -5,7 +5,7 @@
 // (V) L'utente ha la possibilità di scorrere i pianeti e visualizzare ogni caratteristica di essi 
 // (V) Vedendo anche stampata una foto in pagina che corrisponde al pianeta attivo
 // (X) Ci sarà poi una lista dei pianeti più piccola in alto, e anche lì l'active sarà evidenziato
-// (X) Ci saranno 3 sfondi diversi a tema spazio, l'utente potrà cambiare sfondo quando vuole
+// (V) Ci saranno 3 sfondi diversi a tema spazio, l'utente potrà cambiare sfondo quando vuole
 // (X) Ogni pianeta deve avere una sezione "About" che appare/scompare al click nella quale si parla del pianeta con info aggiunte
 // (X) L'utente può cambiare nome a ciascun pianeta attivo quando vuole
                                 
@@ -17,6 +17,17 @@ const pageBody = document.querySelector('body');
 
 // HEADER
 const pageHeader = document.querySelector('header');
+// Titolo header
+// Variabile
+const headerTitle = document.createElement('h1');
+// Classi di stile
+headerTitle.classList.add('fs_50', 'text-white', 'text-center', 'fw-bold', 'text-uppercase');
+// Contenuto
+headerTitle.innerHTML = `
+    the s<img src="img/sole.png" alt="immagine del sole" class="sun_img w_50p position-relative">lar system
+`;
+// Inserimento in pagina
+pageHeader.appendChild(headerTitle);
 
 // MAIN
 const pageMain = document.querySelector('main');
@@ -366,8 +377,8 @@ function fillingContainersUp(ListOfPlanets, thisObject){
         const {name} = currentPlanet;
 
         // AGGIUNTA TITOLO NOME PIANETA
-        const currentPlanetTitle = document.createElement('h1');
-        currentPlanetTitle.classList.add('main_planet_title', 'fw-bold');
+        const currentPlanetTitle = document.createElement('h2');
+        currentPlanetTitle.classList.add('main_planet_title', 'fw-bold', 'fs-1');
         currentPlanetTitle.innerText = name;
         planetTitleContainer.appendChild(currentPlanetTitle);
             

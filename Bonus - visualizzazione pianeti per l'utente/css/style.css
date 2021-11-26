@@ -21,6 +21,9 @@ ul{
 }
 
 /* HEADER */
+.sun_img{
+    bottom: .3rem;
+}
 
 /* MAIN */
 main{
