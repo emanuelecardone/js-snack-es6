@@ -1,8 +1,26 @@
 /* COMMON */
+[class*="sky_bg"]{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.blue_sky_bg{
+    background-image: url(../img/blue.jpg);
+}
+.purple_sky_bg{
+    background-image: url(../img/purple.jpg);
+}
+.green_sky_bg{
+    background-image: url(../img/green.jpg);
+}
 
 /* HEADER */
 
 /* MAIN */
+main{
+    height: calc(100vh - 250px);
+}
+
 
 /* FOOTER */
 
