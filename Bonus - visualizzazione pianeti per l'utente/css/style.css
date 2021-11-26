@@ -53,7 +53,12 @@ main{
 .main_planet_title.active{
     display: block;
 }
-
+.info_text{
+    display: none;
+}
+.info_text.active{
+    display: inline;
+}
 
 /* FOOTER */
 
