@@ -9,3 +9,14 @@
 // Ogni pianeta deve avere una sezione "About" che appare/scompare al click nella quale si parla del pianeta con info aggiunte
 // L'utente può cambiare nome a ciascun pianeta attivo quando vuole
                                 
+
+// INIZIO 
+
+// HEADER
+const pageHeader = document.querySelector('header');
+
+// MAIN
+const pageMain = document.querySelector('main');
+
+// FOOTER
+const pageFooter = document.querySelector('footer');

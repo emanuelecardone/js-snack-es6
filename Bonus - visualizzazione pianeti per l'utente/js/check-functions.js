@@ -1,20 +1,3 @@
-let myWord;
-let specialCharactersTest;
-let numbersTest;
-do{
-    myWord = prompt(`Dammi una parola`);
-    specialCharactersTest = checkSpecialCharacters(myWord);
-    numbersTest = checkNumbers(myWord);
-} while(specialCharactersTest || numbersTest);
-
-let myNumber;
-let lettersTest;
-do{
-    myNumber = prompt(`Dammi un numero`);
-    lettersTest = checkLetters(myNumber);
-} while(lettersTest);
-
-
 // Funzione che controlla la presenza di caratteri speciali in una stringa, parola o numero
 //
 // string -> stringa da analizzare, proveniente da un prompt o dal codice
