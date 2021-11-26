@@ -6,7 +6,7 @@
 // (V) Vedendo anche stampata una foto in pagina che corrisponde al pianeta attivo
 // (X) Ci sarà poi una lista dei pianeti più piccola in alto, e anche lì l'active sarà evidenziato
 // (V) Ci saranno 3 sfondi diversi a tema spazio, l'utente potrà cambiare sfondo quando vuole
-// (X) Ogni pianeta deve avere una sezione "About" che appare/scompare al click nella quale si parla del pianeta con info aggiunte
+// (V) Ogni pianeta deve avere una sezione "About" 
 // (X) L'utente può cambiare nome a ciascun pianeta attivo quando vuole
                                 
 
