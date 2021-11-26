@@ -25,6 +25,7 @@ const planetKeysContainer = document.createElement('div');
 const planetInfosContainer = document.createElement('div');
 const sliderArrowsContainer = document.createElement('div');
 const sliderLeftArrow = document.createElement('i');
+const sliderMiddleTitle = document.createElement('h4');
 const sliderRightArrow = document.createElement('i');
 const planetImage = document.createElement('img');
 
@@ -34,18 +35,22 @@ planetImage.alt = 'Immagine di Mercurio';
 
 // Classi di stile
 sliderLeftArrow.classList.add('fs-1', 'text-white', 'fw-bolder', 'fas', 'fa-arrow-circle-left');
+sliderMiddleTitle.classList.add('fs-4', 'text-white', 'fw-bolder', 'text-uppercase', 'mb-0');
 sliderRightArrow.classList.add('fs-1', 'text-white', 'fw-bolder', 'fas', 'fa-arrow-circle-right');
-sliderArrowsContainer.classList.add('slider_arrows_wrapper', 'border', 'border-5', 'border-white', 'w-25', 'h_10', 'd-flex', 'justify-content-between', 'align-items-center', 'position-absolute');
-planetTitleContainer.classList.add('planet_title_wrapper', 'border', 'border-5', 'border-white', 'w-25', 'h_10', 'd-flex', 'justify-content-center', 'align-items-center', 'position-absolute', 'fs-1', 'text-white', 'fw-bolder');
+sliderArrowsContainer.classList.add('slider_arrows_wrapper', 'w-25', 'h_10', 'd-flex', 'justify-content-between', 'align-items-center', 'position-absolute');
+planetTitleContainer.classList.add('planet_title_wrapper', 'w-25', 'h_10', 'd-flex', 'justify-content-center', 'align-items-center', 'position-absolute', 'fs-1', 'text-white', 'fw-bolder');
 planetImageContainer.classList.add('w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
 planetImage.classList.add('img-fluid');
-planetKeysContainer.classList.add('border', 'border-5', 'border-white', 'w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
-planetInfosContainer.classList.add('border', 'border-5', 'border-white', 'w-25', 'h-25', 'd-flex', 'justify-content-center', 'align-items-center')
+planetKeysContainer.classList.add('w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
+planetInfosContainer.classList.add('planet_infos_wrapper', 'w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center', 'text-center', 'text-white', 'fw-bolder')
+
+// Contenuto
+sliderMiddleTitle.innerHTML = 'see more';
 
 // Inserimento in pagina
 pageMain.append(planetInfosContainer, planetTitleContainer, planetImageContainer, sliderArrowsContainer, planetKeysContainer);
 planetImageContainer.appendChild(planetImage);
-sliderArrowsContainer.append(sliderLeftArrow, sliderRightArrow);
+sliderArrowsContainer.append(sliderLeftArrow, sliderMiddleTitle, sliderRightArrow);
 
 // FOOTER
 const pageFooter = document.querySelector('footer');
@@ -54,7 +59,7 @@ const pageFooter = document.querySelector('footer');
 // Array del Sistema Solare contenente i pianeti (oggetti)
 const solarSystem = [
     {
-        name: 'Mercurio',
+        name: 'Mercury',
         temperature: 166.85,
         satellites: 0,
         equatorialDiameter: 4879.4,
@@ -62,7 +67,7 @@ const solarSystem = [
         orbitalSpeed: 47.36
     },
     {
-        name: 'Venere',
+        name: 'Venus',
         temperature: 463.85,
         satellites: 0,
         equatorialDiameter: 12103.7,
@@ -70,7 +75,7 @@ const solarSystem = [
         orbitalSpeed: 35.02	
     },
     {
-        name: 'Terra',
+        name: 'Earth',
         temperature: 19.85,
         satellites: 1,
         equatorialDiameter: 12756.2,
@@ -78,7 +83,7 @@ const solarSystem = [
         orbitalSpeed: 29.786
     },
     {
-        name: 'Marte',
+        name: 'Mars',
         temperature: -87.15,
         satellites: 2,
         equatorialDiameter: 6804.9,
@@ -86,7 +91,7 @@ const solarSystem = [
         orbitalSpeed: 24.131
     },
     {
-        name: 'Giove',
+        name: 'Jupiter',
         temperature: -121.15,
         satellites: 79,
         equatorialDiameter: 142984,
@@ -94,7 +99,7 @@ const solarSystem = [
         orbitalSpeed: 13.070
     },
     {
-        name: 'Saturno',
+        name: 'Saturn',
         temperature: -130.15,
         satellites: 82,
         equatorialDiameter: 120536,
@@ -102,7 +107,7 @@ const solarSystem = [
         orbitalSpeed: 9.672
     },
     {
-        name: 'Urano',
+        name: 'Uranus',
         temperature: -205.15,
         satellites: 27,
         equatorialDiameter: 51118,
@@ -110,7 +115,7 @@ const solarSystem = [
         orbitalSpeed: 6.836
     },
     {
-        name: 'Nettuno',
+        name: 'Neptune',
         temperature: -220.15,
         satellites: 14,
         equatorialDiameter: 49528,
@@ -144,12 +149,21 @@ for(let key in currentPlanet){
 
         const currentKey = currentPlanet[key];
         const currentKeyListObject = document.createElement('li');
+        currentKeyListObject.classList.add('mb-2');
         const currentFixedName = fixedNamesList[fixedNamesCounter]; 
         currentKeyListObject.innerHTML = `${currentFixedName}: ${currentKey}`;
         keysList.appendChild(currentKeyListObject);
         fixedNamesCounter++;
     }
 }
+
+// Riempimento sezione infos (da rendere invisibile e disponibile solo al click più tardi)
+planetInfosContainer.innerHTML = `
+<span>
+    Mercury is the smallest planet in the Solar System and the closest to the Sun. Its orbit around the Sun takes 87.97 Earth days, the shortest of all the Sun\'s planets. It is named after the Roman god Mercurius (Mercury), god of commerce, messenger of the gods, and mediator between gods and mortals, corresponding to the Greek god Hermes.
+</span>
+`;
+
 
 
 // Ritorna numero chiavi (da descrivere bene dopo)

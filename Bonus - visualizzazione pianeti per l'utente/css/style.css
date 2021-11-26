@@ -29,6 +29,9 @@ main{
 .slider_arrows_wrapper{
     bottom: 10%;
 }
+.planet_infos_wrapper span{
+    line-height: 2rem;
+}
 
 
 /* FOOTER */
