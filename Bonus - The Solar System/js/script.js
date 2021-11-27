@@ -126,6 +126,67 @@ sliderArrowsContainer.append(sliderLeftArrow, sliderMiddleTitle, sliderRightArro
 
 // FOOTER
 const pageFooter = document.querySelector('footer');
+// Sezione social
+// Variabili
+const socialContainer = document.createElement('div');
+const socialFluidContainer = document.createElement('div');
+const socialRow = document.createElement('div');
+const twitterLink = document.createElement('a');
+twitterLink.href = '#';
+const facebookLink = document.createElement('a');
+facebookLink.href = '#';
+const instagramLink = document.createElement('a');
+instagramLink.href = '#';
+const linkedinLink = document.createElement('a');
+linkedinLink.href = '#';
+const twitterLogo = document.createElement('i');
+const facebookLogo = document.createElement('i');
+const instagramLogo = document.createElement('i');
+const linkedinLogo = document.createElement('i');
+
+// Classi di stile
+socialContainer.classList.add('w-25', 'h-50');
+socialFluidContainer.classList.add('container-fluid', 'h-100');
+socialRow.classList.add('row', 'row-cols-4', 'h-100');
+twitterLogo.classList.add('fab', 'fa-twitter', 'text-white', 'fs-3');
+facebookLogo.classList.add('fab', 'fa-facebook', 'text-white', 'fs-3');
+instagramLogo.classList.add('fab', 'fa-instagram', 'text-white', 'fs-3');
+linkedinLogo.classList.add('fab', 'fa-linkedin-in', 'text-white', 'fs-3');
+
+// Inserimento in pagina
+pageFooter.appendChild(socialContainer);
+socialContainer.appendChild(socialFluidContainer);
+socialFluidContainer.appendChild(socialRow);
+for(let i = 0; i < 4; i++){
+    const currentSocialCol = document.createElement('div');
+    const currentSocialWrapper = document.createElement('div');
+
+    currentSocialCol.classList.add('col');
+    currentSocialWrapper.classList.add('w-100', 'h-100', 'd-flex', 'justify-content-center', 'align-items-center');
+
+    currentSocialCol.appendChild(currentSocialWrapper);
+
+    switch(i){
+        case 0:
+            currentSocialWrapper.appendChild(twitterLink);
+            twitterLink.appendChild(twitterLogo);
+            break;
+        case 1:
+            currentSocialWrapper.appendChild(facebookLink);
+            facebookLink.appendChild(facebookLogo);
+            break;
+        case 2:
+            currentSocialWrapper.appendChild(instagramLink);
+            instagramLink.appendChild(instagramLogo);
+            break;
+        case 3:
+            currentSocialWrapper.appendChild(linkedinLink);
+            linkedinLink.appendChild(linkedinLogo);
+            break;    
+    }
+    socialRow.appendChild(currentSocialCol);
+    
+}
 
 
 // ARRAY SOLAR SYSTEM
