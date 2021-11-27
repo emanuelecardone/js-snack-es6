@@ -418,7 +418,7 @@ sliderRightArrow.addEventListener('click', function(){
 function fillingContainersUp(ListOfPlanets, thisObject){
 
     // Variabile per il pianeta corrente
-    const currentActivePlanet = solarSystem[thisObject];
+    const currentActivePlanet = ListOfPlanets[thisObject];
 
     // AGGIUNTA IMMAGINI (grandi e thumbs)
     for(let i = 0; i < ListOfPlanets.length; i++){
