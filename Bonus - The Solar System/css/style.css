@@ -58,6 +58,7 @@ main{
 }
 .big_img.active{
     display: block;
+    animation: active_big_img .25s linear 1;
 }
 .thumb_img{
     width: 40px;
@@ -102,6 +103,15 @@ main{
     }
     100%{
         bottom: 3rem;
+    }
+}
+
+@keyframes active_big_img{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
     }
 }
 
