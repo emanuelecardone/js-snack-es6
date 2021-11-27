@@ -4,11 +4,10 @@
 // (V) Per ogni pianeta, verranno visualizzati: nome, temperatura, satelliti, diametro equatoriale, periodo orbitale e velocità orbitale
 // (V) L'utente ha la possibilità di scorrere i pianeti e visualizzare ogni caratteristica di essi 
 // (V) Vedendo anche stampata una foto in pagina che corrisponde al pianeta attivo
-// (X) Ci sarà poi una lista dei pianeti più piccola in alto, e anche lì l'active sarà evidenziato
+// (V) Ci sarà poi una lista dei pianeti più piccola in alto, e anche lì l'active sarà evidenziato
 // (V) Ci saranno 3 sfondi diversi a tema spazio, l'utente potrà cambiare sfondo quando vuole
 // (V) Ogni pianeta deve avere una sezione "About" 
-// (X) L'utente può cambiare nome a ciascun pianeta attivo quando vuole
-                                
+                             
 
 // INIZIO
 
@@ -44,6 +43,9 @@ const changeThemePurpleButton = document.createElement('button');
 const changeThemeGreenButton = document.createElement('button');
 const planetTitleContainer = document.createElement('div');
 const planetImageContainer = document.createElement('div');
+const planetThumbsContainer = document.createElement('div');
+const planetThumbsFluidContainer = document.createElement('div');
+const planetThumbsRow = document.createElement('div');
 const planetKeysContainer = document.createElement('div');
 const keysList = document.createElement('ul');
 const planetInfosContainer = document.createElement('div');
@@ -67,6 +69,9 @@ sliderRightArrow.classList.add('fs-1', 'text-white', 'fw-bolder', 'fas', 'fa-arr
 sliderArrowsContainer.classList.add('slider_arrows_wrapper', 'w-25', 'h_10', 'd-flex', 'justify-content-between', 'align-items-center', 'position-absolute');
 planetTitleContainer.classList.add('planet_title_wrapper', 'w-25', 'h_10', 'd-flex', 'justify-content-center', 'align-items-center', 'position-absolute', 'fs-1', 'text-white', 'fw-bolder');
 planetImageContainer.classList.add('w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
+planetThumbsContainer.classList.add('planet_thumbs_wrapper', 'w-25', 'h_10', 'position-absolute');
+planetThumbsFluidContainer.classList.add('container-fluid', 'h-100')
+planetThumbsRow.classList.add('row', 'row-cols-8', 'h-100');
 planetKeysContainer.classList.add('w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
 keysList.classList.add('ps-0', 'mb-0', 'text-center', 'text-white', 'fw-bold');
 planetInfosContainer.classList.add('planet_infos_wrapper', 'w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center', 'text-center', 'text-white', 'fw-bolder')
@@ -79,28 +84,42 @@ changeThemePurpleButton.innerText = 'purple';
 changeThemeGreenButton.innerText = 'green';
 
 // Inserimento in pagina
-pageMain.append(changeThemeContainer, planetInfosContainer, planetTitleContainer, planetImageContainer, sliderArrowsContainer, planetKeysContainer);
+pageMain.append(changeThemeContainer, planetInfosContainer, planetTitleContainer, planetImageContainer, sliderArrowsContainer, planetThumbsContainer, planetKeysContainer);
 changeThemeContainer.append(changeThemeTitle, changeThemeColorsContainer);
 changeThemeColorsContainer.appendChild(changeThemeFluidContainer);
 changeThemeFluidContainer.appendChild(changeThemeColorsRow);
-for(let i = 0; i < 3; i++){
-    const currentCol = document.createElement('div');
-    const currentButtonContainer = document.createElement('div');
-    currentCol.classList.add('col');
-    currentButtonContainer.classList.add('w-100', 'h-100','d-flex', 'justify-content-center', 'align-items-center');
-    changeThemeColorsRow.appendChild(currentCol);
-    currentCol.appendChild(currentButtonContainer);
-    switch(i){
-        case 0:
-            currentButtonContainer.appendChild(changeThemeBlueButton);
-            break;
-        case 1:
-            currentButtonContainer.appendChild(changeThemePurpleButton);
-            break;
-        case 2:
-            currentButtonContainer.appendChild(changeThemeGreenButton);        
-            break;
+planetThumbsContainer.appendChild(planetThumbsFluidContainer);
+planetThumbsFluidContainer.appendChild(planetThumbsRow);
+
+for(let i = 0; i < 8; i++){
+
+    if(i < 3){
+        const currentThemeCol = document.createElement('div');
+        const currentButtonContainer = document.createElement('div');
+        currentThemeCol.classList.add('col');
+        currentButtonContainer.classList.add('w-100', 'h-100','d-flex', 'justify-content-center', 'align-items-center');
+        changeThemeColorsRow.appendChild(currentThemeCol);
+        currentThemeCol.appendChild(currentButtonContainer);
+        switch(i){
+            case 0:
+                currentButtonContainer.appendChild(changeThemeBlueButton);
+                break;
+            case 1:
+                currentButtonContainer.appendChild(changeThemePurpleButton);
+                break;
+            case 2:
+                currentButtonContainer.appendChild(changeThemeGreenButton);        
+                break;
+        }
     }
+
+    const currentThumbsCol = document.createElement('div');
+    const currentSingleThumbContainer = document.createElement('div');
+    currentThumbsCol.classList.add('col');
+    currentSingleThumbContainer.classList.add('single_thumb_wrapper','w-100', 'h-100', 'd-flex', 'justify-content-center', 'align-items-center');
+    planetThumbsRow.appendChild(currentThumbsCol);
+    currentThumbsCol.appendChild(currentSingleThumbContainer);
+    
 }
 planetKeysContainer.appendChild(keysList);
 sliderArrowsContainer.append(sliderLeftArrow, sliderMiddleTitle, sliderRightArrow);
@@ -242,8 +261,10 @@ fillingContainersUp(solarSystem, activeObject);
 // Richiamo alla funzione che inquadra il numero di keys
 const numberOfKeys = getKeysAmount(solarSystem[activeObject]);
     
-// Immagine active
+// Immagine grande active
 document.getElementsByClassName('big_img')[activeObject].classList.add('active');
+// Immagine piccola active
+document.getElementsByClassName('thumb_img')[activeObject].classList.add('active');
 // Titolo nome pianeta active
 document.getElementsByClassName('main_planet_title')[activeObject].classList.add('active');
 // "li" active
@@ -281,6 +302,7 @@ changeThemeGreenButton.addEventListener('click', function(){
 sliderLeftArrow.addEventListener('click', function(){
 
     document.getElementsByClassName('big_img')[activeObject].classList.remove('active');
+    document.getElementsByClassName('thumb_img')[activeObject].classList.remove('active');
     document.getElementsByClassName('main_planet_title')[activeObject].classList.remove('active');
     for(let i = 0; i < numberOfKeys - 1; i++){
         document.getElementsByClassName(`li_${activeObject}`)[i].classList.remove('active');
@@ -290,6 +312,7 @@ sliderLeftArrow.addEventListener('click', function(){
     activeObject = (activeObject > 0) ? activeObject - 1 : activeObject = solarSystem.length - 1;
     
     document.getElementsByClassName('big_img')[activeObject].classList.add('active');
+    document.getElementsByClassName('thumb_img')[activeObject].classList.add('active');
     document.getElementsByClassName('main_planet_title')[activeObject].classList.add('active');
     for(let i = 0; i < numberOfKeys - 1; i++){
         document.getElementsByClassName(`li_${activeObject}`)[i].classList.add('active');
@@ -302,6 +325,7 @@ sliderLeftArrow.addEventListener('click', function(){
 sliderRightArrow.addEventListener('click', function(){
 
     document.getElementsByClassName('big_img')[activeObject].classList.remove('active');
+    document.getElementsByClassName('thumb_img')[activeObject].classList.remove('active');
     document.getElementsByClassName('main_planet_title')[activeObject].classList.remove('active');
     for(let i = 0; i < numberOfKeys - 1; i++){
         document.getElementsByClassName(`li_${activeObject}`)[i].classList.remove('active');
@@ -311,6 +335,7 @@ sliderRightArrow.addEventListener('click', function(){
     activeObject = (activeObject < solarSystem.length - 1) ? activeObject + 1 : activeObject = 0;
     
     document.getElementsByClassName('big_img')[activeObject].classList.add('active');
+    document.getElementsByClassName('thumb_img')[activeObject].classList.add('active');
     document.getElementsByClassName('main_planet_title')[activeObject].classList.add('active');
     for(let i = 0; i < numberOfKeys - 1; i++){
         document.getElementsByClassName(`li_${activeObject}`)[i].classList.add('active');
@@ -334,11 +359,14 @@ function fillingContainersUp(ListOfPlanets, thisObject){
     // Variabile per il pianeta corrente
     const currentActivePlanet = solarSystem[thisObject];
 
-    // AGGIUNTA IMMAGINI
+    // AGGIUNTA IMMAGINI (grandi e thumbs)
     for(let i = 0; i < ListOfPlanets.length; i++){
 
         let currentSourceName;
         const currentPlanetImage = document.createElement('img');
+        // Necessarie le 2 immagini diverse opppure non le aggiunge in entrambi i containers
+        const currentSingleThumbContainer = document.getElementsByClassName('single_thumb_wrapper')[i];
+        const currentPlanetThumb = document.createElement('img');
         switch(i){
             case 0:
                 currentSourceName = 'mercurio';
@@ -367,9 +395,14 @@ function fillingContainersUp(ListOfPlanets, thisObject){
         }
         currentPlanetImage.src = `img/${currentSourceName}.png`;
         currentPlanetImage.alt = `Immagine di ${currentSourceName}`;
-        currentPlanetImage.classList.add('img-fluid', 'big_img', `${currentSourceName}_img`);
-        planetImageContainer.appendChild(currentPlanetImage);
+        currentPlanetThumb.src = `img/${currentSourceName}.png`;
+        currentPlanetThumb.alt = `Immagine di ${currentSourceName}`;
 
+        currentPlanetImage.classList.add('img-fluid', 'big_img', `${currentSourceName}_img`);
+        currentPlanetThumb.classList.add('thumb_img', `${currentSourceName}_img`, 'position-relative');
+
+        planetImageContainer.appendChild(currentPlanetImage);
+        currentSingleThumbContainer.appendChild(currentPlanetThumb);
         
         // Variabile per il pianeta attuale
         const currentPlanet = ListOfPlanets[i];

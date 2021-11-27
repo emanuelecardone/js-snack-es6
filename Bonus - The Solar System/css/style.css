@@ -19,6 +19,10 @@ ul{
 .btn:focus{
     box-shadow: none;
 }
+.row-cols-8 > .col{
+    flex: 0 0 auto;
+    width: calc(100% / 8);
+}
 
 /* HEADER */
 .sun_img{
@@ -31,7 +35,11 @@ main{
 }
 .change_theme_wrapper{
     top: 10%;
-    left: 5%;
+    left: 4.1%;
+}
+.planet_thumbs_wrapper{
+    top: 10%;
+    right: 4.1%;
 }
 .planet_title_wrapper{
     top: 10%;
@@ -50,6 +58,12 @@ main{
 }
 .big_img.active{
     display: block;
+}
+.thumb_img{
+    width: 40px;
+}
+.thumb_img.active{
+    animation: active_thumb 1s linear infinite;
 }
 .list_key_item{
     display: none;
@@ -73,6 +87,23 @@ main{
 /* FOOTER */
 
 /* ANIMAZIONI */
+@keyframes active_thumb{
+    0%{
+        bottom: 3rem;
+    }
+    25%{
+        bottom: 3.5rem;
+    }
+    50%{
+        bottom: 3rem;
+    }
+    75%{
+        bottom: 3.5rem;
+    }
+    100%{
+        bottom: 3rem;
+    }
+}
 
 /* HOVER */
 
