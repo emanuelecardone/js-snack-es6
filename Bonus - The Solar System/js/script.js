@@ -459,7 +459,7 @@ function fillingContainersUp(ListOfPlanets, thisObject){
         currentPlanetThumb.src = `img/${currentSourceName}.png`;
         currentPlanetThumb.alt = `Immagine di ${currentSourceName}`;
 
-        currentPlanetImage.classList.add('img-fluid', 'big_img', `${currentSourceName}_img`);
+        currentPlanetImage.classList.add('big_img', `${currentSourceName}_img`);
         currentPlanetThumb.classList.add('thumb_img', `${currentSourceName}_img`, 'position-relative');
 
         planetImageContainer.appendChild(currentPlanetImage);
