@@ -58,7 +58,7 @@ main{
 }
 .big_img.active{
     display: block;
-    animation: active_big_img .25s linear 1;
+    animation: active_big_img_and_text .25s linear 1;
 }
 .thumb_img{
     width: 40px;
@@ -71,18 +71,21 @@ main{
 }
 .list_key_item.active{
     display: list-item;
+    animation: active_big_img_and_text .25s linear 1;
 }
 .main_planet_title{
     display: none;
 }
 .main_planet_title.active{
     display: block;
+    animation: active_big_img_and_text .25s linear 1;
 }
 .info_text{
     display: none;
 }
 .info_text.active{
     display: inline;
+    animation: active_big_img_and_text .25s linear 1;
 }
 
 /* FOOTER */
@@ -106,7 +109,7 @@ main{
     }
 }
 
-@keyframes active_big_img{
+@keyframes active_big_img_and_text{
     0%{
         opacity: 0;
     }
