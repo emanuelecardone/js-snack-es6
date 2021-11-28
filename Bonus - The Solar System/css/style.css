@@ -42,6 +42,7 @@ main{
     top: 0;
     left: 4.1%;
     width: 45%;
+    height: 7.5%;
 }
 .change_theme_title{
     font-size: .75rem;
@@ -201,6 +202,9 @@ main{
     .planet_thumbs_wrapper{
         width: 40%;
     }
+    .change_theme_wrapper{
+        height: 10%;
+    }
     .main_planet_title{
         font-size: calc(1.675rem + 1.5vw);
     }
@@ -228,7 +232,7 @@ main{
         width: 25%;
     }
     .social_wrapper{
-        width: 25%;
+        max-width: 384px;
     }
 }
 

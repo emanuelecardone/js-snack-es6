@@ -58,7 +58,7 @@ const sliderMiddleTitle = document.createElement('h4');
 const sliderRightArrow = document.createElement('i');
 
 // Classi di stile
-changeThemeContainer.classList.add('change_theme_wrapper', 'h_10', 'd-flex', 'flex-column', 'justify-content-between', 'align-items-center', 'position-absolute')
+changeThemeContainer.classList.add('change_theme_wrapper',  'd-flex', 'flex-column', 'justify-content-around', 'justify-content-md-between', 'align-items-center', 'position-absolute')
 changeThemeTitle.classList.add('change_theme_title', 'text-white', 'text-center', 'text-uppercase', 'mb-0', 'fw-bolder');
 changeThemeColorsContainer.classList.add('change_theme_colors_wrapper', 'w_80', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
 changeThemeFluidContainer.classList.add('container-fluid', 'h-100');
