@@ -234,9 +234,9 @@ main{
     }
     .slider_arrows_wrapper{
         bottom: 10%;
-        width: 25%;
     }
-    .social_wrapper{
+    .social_wrapper,
+    .slider_arrows_wrapper{
         max-width: 384px;
     }
 }
