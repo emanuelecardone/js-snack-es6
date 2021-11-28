@@ -49,6 +49,9 @@ const planetThumbsRow = document.createElement('div');
 const planetKeysContainer = document.createElement('div');
 const keysList = document.createElement('ul');
 const planetInfosContainer = document.createElement('div');
+const planetInfosTextContainer = document.createElement('div');
+const planetInfosLeftScrollDown = document.createElement('i');
+const planetInfosRightScrollDown = document.createElement('i');
 const sliderArrowsContainer = document.createElement('div');
 const sliderLeftArrow = document.createElement('i');
 const sliderMiddleTitle = document.createElement('h4');
@@ -74,7 +77,10 @@ planetThumbsFluidContainer.classList.add('container-fluid', 'h-100')
 planetThumbsRow.classList.add('row', 'row-cols-8', 'h-100', );
 planetKeysContainer.classList.add('planet_keys_wrapper', 'd-flex', 'justify-content-center', 'align-items-center');
 keysList.classList.add('ps-0', 'mb-0', 'text-center', 'text-white', 'fw-bold');
-planetInfosContainer.classList.add('planet_infos_wrapper', 'd-flex', 'justify-content-center', 'text-center', 'text-white', 'fw-bolder')
+planetInfosContainer.classList.add('planet_infos_wrapper', 'd-flex', 'justify-content-between', 'align-items-center');
+planetInfosTextContainer.classList.add('planet_infos_text_wrapper', 'w-75', 'h-100', 'd-flex', 'justify-content-center', 'text-center', 'text-white', 'fw-bolder');
+planetInfosLeftScrollDown.classList.add('left_info_scroll_down', 'text-white', 'fs-2', 'fw-bold', 'fas', 'fa-angle-double-down');
+planetInfosRightScrollDown.classList.add('right_info_scroll_down', 'text-white', 'fs-2', 'fw-bold', 'fas', 'fa-angle-double-down');
 
 // Contenuto
 changeThemeTitle.innerText = 'change theme';
@@ -90,6 +96,7 @@ changeThemeColorsContainer.appendChild(changeThemeFluidContainer);
 changeThemeFluidContainer.appendChild(changeThemeColorsRow);
 planetThumbsContainer.appendChild(planetThumbsFluidContainer);
 planetThumbsFluidContainer.appendChild(planetThumbsRow);
+planetInfosContainer.append(planetInfosLeftScrollDown, planetInfosTextContainer, planetInfosRightScrollDown);
 
 for(let i = 0; i < 8; i++){
 
@@ -500,7 +507,7 @@ function fillingContainersUp(ListOfPlanets, thisObject){
         }
 
         // AGGIUNTA TESTI NELLA SEZIONE INFOS
-        planetInfosContainer.innerHTML += infosArray[i];
+        planetInfosTextContainer.innerHTML += infosArray[i];
         
     }
     

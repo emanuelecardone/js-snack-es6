@@ -65,9 +65,11 @@ main{
     cursor: pointer;
 }
 .planet_infos_wrapper{
-    overflow: auto;
     width: 50%;
     height: 10%;
+}
+.planet_infos_text_wrapper{
+    overflow: auto;
 }
 .planet_infos_wrapper span{
     line-height: 2rem;
@@ -125,9 +127,6 @@ main{
     display: inline;
     animation: active_big_img_and_text .25s linear 1;
 }
-
-
-
 /* FOOTER */
 .social_wrapper{
     width: 50%;
