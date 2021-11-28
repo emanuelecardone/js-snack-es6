@@ -538,13 +538,13 @@ function getKeysLayoutName (currentObject){
                 currentName = 'Satellites';
                 break;
             case 'equatorialDiameter':
-                currentName = 'Equatorial Diameter'
+                currentName = 'Equatorial Diameter';
                 break;
             case 'orbitalPeriod':
-                currentName = 'Orbital period'
+                currentName = 'Orbital period';
                 break;
             case 'orbitalSpeed':
-                currentName = 'Orbital speed'
+                currentName = 'Orbital speed';
                 break;            
         }
         if(!(key === 'name')){
