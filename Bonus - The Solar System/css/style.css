@@ -206,6 +206,7 @@ main{
     .change_theme_wrapper,
     .planet_thumbs_wrapper{
         width: 40%;
+        top: 5%;
     }
     .change_theme_wrapper{
         height: 10%;
