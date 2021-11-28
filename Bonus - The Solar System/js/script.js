@@ -20,7 +20,7 @@ const pageHeader = document.querySelector('header');
 // Variabile
 const headerTitle = document.createElement('h1');
 // Classi di stile
-headerTitle.classList.add('fs_50', 'text-white', 'text-center', 'fw-bold', 'text-uppercase');
+headerTitle.classList.add('header_title', 'text-white', 'text-center', 'fw-bold', 'text-uppercase');
 // Contenuto
 headerTitle.innerHTML = `
     the s<img src="img/sole.png" alt="immagine del sole" class="sun_img w_50p position-relative">lar system
@@ -55,26 +55,26 @@ const sliderMiddleTitle = document.createElement('h4');
 const sliderRightArrow = document.createElement('i');
 
 // Classi di stile
-changeThemeContainer.classList.add('change_theme_wrapper', 'w-25', 'h_10', 'd-flex', 'flex-column', 'justify-content-between', 'align-items-center', 'position-absolute')
-changeThemeTitle.classList.add('change_theme_title', 'fs-4', 'text-white', 'text-center', 'text-uppercase', 'mb-0', 'fw-bolder');
+changeThemeContainer.classList.add('change_theme_wrapper', 'h_10', 'd-flex', 'flex-column', 'justify-content-between', 'align-items-center', 'position-absolute')
+changeThemeTitle.classList.add('change_theme_title', 'text-white', 'text-center', 'text-uppercase', 'mb-0', 'fw-bolder');
 changeThemeColorsContainer.classList.add('change_theme_colors_wrapper', 'w_80', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
 changeThemeFluidContainer.classList.add('container-fluid', 'h-100');
 changeThemeColorsRow.classList.add('row', 'row-cols-3', 'h-100');
-changeThemeBlueButton.classList.add('btn', 'blue_button', 'w-100', 'h-100', 'p-0', 'text-white', 'fs_10', 'fw-bolder', 'text-uppercase', 'text-center', 'blue_sky_bg');
-changeThemePurpleButton.classList.add('btn', 'purple_button', 'w-100', 'h-100', 'p-0', 'text-white', 'fs_10', 'fw-bolder', 'text-uppercase', 'text-center', 'purple_sky_bg');
-changeThemeGreenButton.classList.add('btn', 'green_button', 'w-100', 'h-100', 'p-0', 'text-white', 'fs_10', 'fw-bolder', 'text-uppercase', 'text-center', 'green_sky_bg');
+changeThemeBlueButton.classList.add('btn', 'border', 'border-1', 'border-white', 'blue_button', 'w-100', 'h-100', 'p-0', 'text-white', 'fw-bolder', 'text-uppercase', 'text-center', 'blue_sky_bg');
+changeThemePurpleButton.classList.add('btn', 'border', 'border-1', 'border-white', 'purple_button', 'w-100', 'h-100', 'p-0', 'text-white', 'fw-bolder', 'text-uppercase', 'text-center', 'purple_sky_bg');
+changeThemeGreenButton.classList.add('btn', 'border', 'border-1', 'border-white', 'green_button', 'w-100', 'h-100', 'p-0', 'text-white', 'fw-bolder', 'text-uppercase', 'text-center', 'green_sky_bg');
 sliderLeftArrow.classList.add('fs-1', 'text-white', 'fw-bolder', 'fas', 'fa-arrow-circle-left');
 sliderMiddleTitle.classList.add('fs-4', 'text-white', 'fw-bolder', 'text-uppercase', 'mb-0', 'text-center');
 sliderRightArrow.classList.add('fs-1', 'text-white', 'fw-bolder', 'fas', 'fa-arrow-circle-right');
-sliderArrowsContainer.classList.add('slider_arrows_wrapper', 'w-25', 'h_10', 'd-flex', 'justify-content-between', 'align-items-center', 'position-absolute');
+sliderArrowsContainer.classList.add('slider_arrows_wrapper', 'h_10', 'd-flex', 'justify-content-between', 'align-items-center', 'position-absolute');
 planetTitleContainer.classList.add('planet_title_wrapper', 'w-25', 'h_10', 'd-flex', 'justify-content-center', 'align-items-center', 'position-absolute', 'fs-1', 'text-white', 'fw-bolder');
-planetImageContainer.classList.add('w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
-planetThumbsContainer.classList.add('planet_thumbs_wrapper', 'w-25', 'h_10', 'position-absolute');
+planetImageContainer.classList.add('big_img_wrapper','d-flex', 'justify-content-center', 'align-items-center');
+planetThumbsContainer.classList.add('planet_thumbs_wrapper', 'h_10', 'position-absolute');
 planetThumbsFluidContainer.classList.add('container-fluid', 'h-100')
-planetThumbsRow.classList.add('row', 'row-cols-8', 'h-100');
-planetKeysContainer.classList.add('w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center');
+planetThumbsRow.classList.add('row', 'row-cols-8', 'h-100', );
+planetKeysContainer.classList.add('planet_keys_wrapper', 'd-flex', 'justify-content-center', 'align-items-center');
 keysList.classList.add('ps-0', 'mb-0', 'text-center', 'text-white', 'fw-bold');
-planetInfosContainer.classList.add('planet_infos_wrapper', 'w-25', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center', 'text-center', 'text-white', 'fw-bolder')
+planetInfosContainer.classList.add('planet_infos_wrapper', 'd-flex', 'justify-content-center', 'text-center', 'text-white', 'fw-bolder')
 
 // Contenuto
 changeThemeTitle.innerText = 'change theme';
@@ -145,7 +145,7 @@ const instagramLogo = document.createElement('i');
 const linkedinLogo = document.createElement('i');
 
 // Classi di stile
-socialContainer.classList.add('w-25', 'h-50');
+socialContainer.classList.add('social_wrapper', 'h-50');
 socialFluidContainer.classList.add('container-fluid', 'h-100');
 socialRow.classList.add('row', 'row-cols-4', 'h-100');
 twitterLogo.classList.add('fab', 'fa-twitter', 'text-white', 'fs-3');
@@ -472,7 +472,7 @@ function fillingContainersUp(ListOfPlanets, thisObject){
 
         // AGGIUNTA TITOLO NOME PIANETA
         const currentPlanetTitle = document.createElement('h2');
-        currentPlanetTitle.classList.add('main_planet_title', 'fw-bold', 'fs-1');
+        currentPlanetTitle.classList.add('main_planet_title', 'fw-bold');
         currentPlanetTitle.innerText = name;
         planetTitleContainer.appendChild(currentPlanetTitle);
             
