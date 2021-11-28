@@ -78,7 +78,7 @@ planetThumbsRow.classList.add('row', 'row-cols-8', 'h-100', );
 planetKeysContainer.classList.add('planet_keys_wrapper', 'd-flex', 'justify-content-center', 'align-items-center');
 keysList.classList.add('ps-0', 'mb-0', 'text-center', 'text-white', 'fw-bold');
 planetInfosContainer.classList.add('planet_infos_wrapper', 'd-flex', 'justify-content-between', 'align-items-center');
-planetInfosTextContainer.classList.add('planet_infos_text_wrapper', 'w-75', 'h-100', 'd-flex', 'justify-content-center', 'text-center', 'text-white', 'fw-bolder');
+planetInfosTextContainer.classList.add('planet_infos_text_wrapper', 'h-100', 'd-flex', 'justify-content-center', 'text-center', 'text-white', 'fw-bolder');
 planetInfosLeftScrollDown.classList.add('left_info_scroll_down', 'text-white', 'fs-2', 'fw-bold', 'fas', 'fa-angle-double-down');
 planetInfosRightScrollDown.classList.add('right_info_scroll_down', 'text-white', 'fs-2', 'fw-bold', 'fas', 'fa-angle-double-down');
 

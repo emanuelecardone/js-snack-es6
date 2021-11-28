@@ -70,6 +70,7 @@ main{
     height: 10%;
 }
 .planet_infos_text_wrapper{
+    width: 75%;
     overflow: auto;
 }
 .planet_infos_wrapper span{
@@ -185,6 +186,10 @@ main{
 @media screen and (min-width: 768px){
     main{
         gap: 0;
+    }
+    .planet_infos_text_wrapper{
+        width: 60%;
+        overflow: auto;
     }
     .planet_infos_wrapper,
     .planet_keys_wrapper{
