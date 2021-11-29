@@ -65,5 +65,5 @@ function getTimeInLoop(){
     document.querySelector('.day_text').innerText =  `${dateDay} ${dateMonth} ${dateYear}`;
     document.querySelector('.minute_text').innerText = `${dateHour} : ${dateMinute} : ${dateSecond}`;
     
-    setTimeout(function(){getTimeInLoop()});
+    setTimeout(function(){getTimeInLoop()}, 1000);
 }
