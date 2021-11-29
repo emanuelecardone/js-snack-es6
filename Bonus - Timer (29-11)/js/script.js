@@ -1,49 +1,114 @@
+// Array di oggetti 
+const sunGlasses = [
+    {   
+        brand: 'Ray-Ban',
+        name: 'Wayfarer',
+        price: 400
+    },
+    {   
+        brand: 'Armani',
+        name: 'Pilot',
+        price: 300 
+    },
+    {   
+        brand: 'Polaroid',
+        name: '07886',
+        price: 150
+    },
+    {   
+        brand: 'Oakley',
+        name: 'Fuel Cell',
+        price: 180
+    },
+    {   
+        brand: 'VonZipper',
+        name: 'Speedtuck',
+        price: 70
+    },
+];
+
+
 // Variabile body
 const pageBody = document.querySelector('body');
 
-// Variabile header, main, timer container, timer e footer 
+// Variabile header, timer container, main, object container, timer e footer 
 const pageHeader = document.createElement('header');
-
-const pageMain = document.createElement('main');
 const timerContainer = document.createElement('div');
 const timer = document.createElement('div');
-const timerDay = document.createElement('span');
 const timerMinutes = document.createElement('span');
+
+const pageMain = document.createElement('main');
+const objectContainer = document.createElement('div');    
 
 const pageFooter = document.createElement('footer');
 
-// Classi di stile header, main, timer container, timer e footer
+// Classi di stile header, timer container, main, object container, timer e footer
 pageHeader.classList.add('w-100', 'h_100p');
+timerContainer.classList.add('w-100', 'h-100', 'd-flex', 'justify-content-center', 'align-items-center');
+timer.classList.add('timer', 'h-100', 'd-flex', 'flex-column', 'justify-content-center', 'align-items-center', 'fw-bold', 'fs-1', 'rounded');
+timerMinutes.classList.add('minute_text', 'p-5');
 
 pageMain.classList.add('w-100', 'd-flex', 'justify-content-center', 'align-items-center');
-timerContainer.classList.add('w-75', 'h-75', 'd-flex', 'justify-content-center', 'align-items-center');
-timer.classList.add('timer', 'd-flex', 'flex-column', 'justify-content-center', 'align-items-center', 'fw-bold', 'fs-1');
-timerDay.classList.add('day_text');
-timerMinutes.classList.add('minute_text');
+objectContainer.classList.add('object_wrapper', 'w-50', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center', 'text-center');
 
 pageFooter.classList.add('w-100', 'h_100p');
 
+// Variabile active item
+let activeObject = 0;
 
- 
+// Contatore per testo main
+let myCounter = 0;
 
-// Inserimento in pagina header, main, timer container, timer e footer
+// Lunghezza array
+const arraySize = 100;
+
+// Contenuto object wrapper
+objectContainer.innerHTML = `
+${sunGlasses[activeObject].brand}<br>
+${sunGlasses[activeObject].name}<br>
+${sunGlasses[activeObject].price}         
+`;
+
+// Inserimento in pagina header, timer container, main, object container, timer e footer
 pageBody.append(pageHeader, pageMain, pageFooter);
-pageMain.appendChild(timerContainer);
+
+pageHeader.appendChild(timerContainer);
 timerContainer.appendChild(timer);
-timer.append(timerDay, timerMinutes);
+timer.appendChild(timerMinutes);
+
+pageMain.appendChild(objectContainer);
+
+
+
 
 
 // Richiamo alla funzione che triggera il timer
-getTimeInLoop();
+getTimeInLoop(activeObject, myCounter, sunGlasses);
+
+// Richiamo alla funzione che genera un array ordinato di numeri da 1 a 100
+const myNumbers = getHundredNumbers(arraySize);
+
+
+// Funzione che genera un array ordinato di numeri da 1 a 100
+function getHundredNumbers(arrayLength){
+    const numbersArray = []
+    for(let i = 0; i < arrayLength; i++){
+        numbersArray.push(i);
+    }
+    return (numbersArray);
+}
 
 
 
-// Funzione che triggera il timer
+// Funzione che triggera il timer e cambia activeObject ogni 5s
 // Questa funzione si richiama da sola creando un loop ma con il ritardo di 1s
 // Ogni secondo, riempio l'innerText del timer con l'ora attuale, quindi
 // Ogni secondo che passa l'innerText con l'orario aumenterà di un secondo
-function getTimeInLoop(){
+function getTimeInLoop(thisActive, thisCounter, thisArray){
 
+    
+    
+    
     // Contenuto timer
     const thisDate = new Date();
     let dateHour = thisDate.getHours();
@@ -58,5 +123,22 @@ function getTimeInLoop(){
     // Contenuto degli span
     document.querySelector('.minute_text').innerText = `${dateHour} : ${dateMinute} : ${dateSecond}`;
     
-    setTimeout(function(){getTimeInLoop()}, 1000);
+    if(thisCounter % 5 === 0){
+         
+        console.log(thisActive);
+        
+        const {brand, name, price} = thisArray[thisActive];
+                                                                                                                                                              
+        document.querySelector('.object_wrapper').innerHTML = `
+            ${brand}<br>
+            ${name}<br>
+            ${price}         
+        `;
+        
+        thisActive = (thisActive < 4) ? thisActive = thisActive + 1 : thisActive = 0;
+    }
+
+    thisCounter++;
+   
+    setTimeout(function(){getTimeInLoop(thisActive, thisCounter, thisArray)}, 1000);
 }

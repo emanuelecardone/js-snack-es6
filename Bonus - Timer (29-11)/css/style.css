@@ -8,11 +8,14 @@ main{
 }
 .timer{
     width: 500px;
-    height: 500px;
-    border-radius: 50%;
+}
+.timer,
+.object_wrapper{
     background-color: black;
     color: cyan;
+    border: 5px solid cyan;
 }
+
 
 /* FOOTER */
 
