@@ -1,32 +1,21 @@
-// Array di oggetti 
-const sunGlasses = [
-    {   
-        brand: 'Ray-Ban',
-        name: 'Wayfarer',
-        price: 400
-    },
-    {   
-        brand: 'Armani',
-        name: 'Pilot',
-        price: 300 
-    },
-    {   
-        brand: 'Polaroid',
-        name: '07886',
-        price: 150
-    },
-    {   
-        brand: 'Oakley',
-        name: 'Fuel Cell',
-        price: 180
-    },
-    {   
-        brand: 'VonZipper',
-        name: 'Speedtuck',
-        price: 70
-    },
-];
+const sunGlassesBrands = ['Ray-Ban', 'Armani', 'Polaroid', 'Oakley', 'VonZipper'];
+// Lunghezza array
+const arraySize = 100;
+const modelsNumbers = getHundredNumbers(arraySize);
 
+console.log(modelsNumbers);
+
+// Array di oggetti (prezzi random da 100 a 500)
+ const sunGlasses = modelsNumbers.map((element, index, array) => {
+     console.log(index);
+    return{
+        brand: sunGlassesBrands[Math.floor(Math.random() * 4) + 1],
+        model: `Model ${modelsNumbers[index]}`,
+        price: Math.floor(Math.random() * 400 + 1) + 100     
+    }; 
+});
+
+console.log(sunGlasses);
 
 // Variabile body
 const pageBody = document.querySelector('body');
@@ -59,15 +48,14 @@ let activeObject = 0;
 // Contatore per testo main
 let myCounter = 0;
 
-// Lunghezza array
-const arraySize = 100;
+
 
 // Contenuto object wrapper
-objectContainer.innerHTML = `
-${sunGlasses[activeObject].brand}<br>
-${sunGlasses[activeObject].name}<br>
-${sunGlasses[activeObject].price}         
-`;
+// objectContainer.innerHTML = `
+// ${sunGlasses[activeObject].brand}<br>
+// ${sunGlasses[activeObject].name}<br>
+// ${sunGlasses[activeObject].price}         
+// `;
 
 // Inserimento in pagina header, timer container, main, object container, timer e footer
 pageBody.append(pageHeader, pageMain, pageFooter);
@@ -85,8 +73,6 @@ pageMain.appendChild(objectContainer);
 // Richiamo alla funzione che triggera il timer
 getTimeInLoop(activeObject, myCounter, sunGlasses);
 
-// Richiamo alla funzione che genera un array ordinato di numeri da 1 a 100
-const myNumbers = getHundredNumbers(arraySize);
 
 
 // Funzione che genera un array ordinato di numeri da 1 a 100
@@ -127,13 +113,13 @@ function getTimeInLoop(thisActive, thisCounter, thisArray){
          
         console.log(thisActive);
         
-        const {brand, name, price} = thisArray[thisActive];
+        // const {brand, name, price} = thisArray[thisActive];
                                                                                                                                                               
-        document.querySelector('.object_wrapper').innerHTML = `
-            ${brand}<br>
-            ${name}<br>
-            ${price}         
-        `;
+        // document.querySelector('.object_wrapper').innerHTML = `
+        //     ${brand}<br>
+        //     ${name}<br>
+        //     ${price}         
+        // `;
         
         thisActive = (thisActive < 4) ? thisActive = thisActive + 1 : thisActive = 0;
     }
