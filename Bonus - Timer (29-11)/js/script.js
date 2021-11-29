@@ -64,7 +64,7 @@ timer.classList.add('timer', 'h-100', 'd-flex', 'flex-column', 'justify-content-
 timerMinutes.classList.add('minute_text', 'p-5');
 
 pageMain.classList.add('w-100', 'd-flex', 'justify-content-center', 'align-items-center');
-objectContainer.classList.add('object_wrapper', 'w-50', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center', 'text-center');
+objectContainer.classList.add('object_wrapper', 'w-50', 'h-50', 'd-flex', 'justify-content-center', 'align-items-center', 'text-center', 'fs-1');
 
 pageFooter.classList.add('w-100', 'h_100p');
 
@@ -77,11 +77,11 @@ let myCounter = 0;
 
 
 // Contenuto object wrapper
-objectContainer.innerHTML = `
+objectContainer.innerHTML = `<span class="object_text">
 Brand: ${glassesArraysList[activeObject][activeObject].brand}<br>
 Model: ${glassesArraysList[activeObject][activeObject].model}<br>
 Price: ${glassesArraysList[activeObject][activeObject].price}         
-`;
+</span>`;
 
 // Inserimento in pagina header, timer container, main, object container, timer e footer
 pageBody.append(pageHeader, pageMain, pageFooter);
@@ -135,7 +135,7 @@ function getTimeInLoop(thisActive, thisCounter, thisArray){
     // Contenuto degli span
     document.querySelector('.minute_text').innerText = `${dateHour} : ${dateMinute} : ${dateSecond}`;
     
-    if(thisCounter % 5 === 0){
+    if(thisCounter % 3 === 0){
          
         console.log(thisActive);
         
@@ -143,11 +143,11 @@ function getTimeInLoop(thisActive, thisCounter, thisArray){
 
         const indexRandom = Math.floor(Math.random() * thisArray.length) + 0;
                                                                                                                                                               
-        document.querySelector('.object_wrapper').innerHTML = `
+        document.querySelector('.object_wrapper').innerHTML = `<span class="object_text">
         Brand: ${thisArray[indexRandom][Math.floor(Math.random() * thisArray[indexRandom].length) + 0].brand}<br>
         Model: ${thisArray[indexRandom][Math.floor(Math.random() * thisArray[indexRandom].length) + 0].model}<br>
         Price: ${thisArray[indexRandom][Math.floor(Math.random() * thisArray[indexRandom].length) + 0].price}         
-        `;
+        </span>`;
     }
 
     thisCounter++;

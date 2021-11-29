@@ -15,7 +15,24 @@ main{
     color: cyan;
     border: 5px solid cyan;
 }
+.object_text{
+    animation: text_ani 3.1s linear 1;
+}
 
 
 /* FOOTER */
 
+
+
+/* ANIMAZIONI */
+@keyframes text_ani{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
