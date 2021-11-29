@@ -77,11 +77,11 @@ let myCounter = 0;
 
 
 // Contenuto object wrapper
-// objectContainer.innerHTML = `
-// ${sunGlasses[activeObject].brand}<br>
-// ${sunGlasses[activeObject].name}<br>
-// ${sunGlasses[activeObject].price}         
-// `;
+objectContainer.innerHTML = `
+Brand: ${glassesArraysList[activeObject][activeObject].brand}<br>
+Model: ${glassesArraysList[activeObject][activeObject].model}<br>
+Price: ${glassesArraysList[activeObject][activeObject].price}         
+`;
 
 // Inserimento in pagina header, timer container, main, object container, timer e footer
 pageBody.append(pageHeader, pageMain, pageFooter);
@@ -97,7 +97,7 @@ pageMain.appendChild(objectContainer);
 
 
 // Richiamo alla funzione che triggera il timer
-getTimeInLoop(activeObject, myCounter, sunGlasses);
+getTimeInLoop(activeObject, myCounter, glassesArraysList);
 
 
 
@@ -139,15 +139,15 @@ function getTimeInLoop(thisActive, thisCounter, thisArray){
          
         console.log(thisActive);
         
-        // const {brand, name, price} = thisArray[thisActive];
+        const {brand, name, price} = thisArray[thisActive];
+
+        const indexRandom = Math.floor(Math.random() * thisArray.length) + 0;
                                                                                                                                                               
-        // document.querySelector('.object_wrapper').innerHTML = `
-        //     ${brand}<br>
-        //     ${name}<br>
-        //     ${price}         
-        // `;
-        
-        thisActive = (thisActive < 4) ? thisActive = thisActive + 1 : thisActive = 0;
+        document.querySelector('.object_wrapper').innerHTML = `
+        Brand: ${thisArray[indexRandom][Math.floor(Math.random() * thisArray[indexRandom].length) + 0].brand}<br>
+        Model: ${thisArray[indexRandom][Math.floor(Math.random() * thisArray[indexRandom].length) + 0].model}<br>
+        Price: ${thisArray[indexRandom][Math.floor(Math.random() * thisArray[indexRandom].length) + 0].price}         
+        `;
     }
 
     thisCounter++;
