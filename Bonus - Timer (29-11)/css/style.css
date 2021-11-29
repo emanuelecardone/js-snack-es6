@@ -1,0 +1,19 @@
+/* COMMON */
+
+/* HEADER */
+
+/* MAIN */
+main{
+    height: calc(100vh - 200px);
+}
+.timer{
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background-color: black;
+    color: cyan;
+    gap: 5rem;
+}
+
+/* FOOTER */
+
