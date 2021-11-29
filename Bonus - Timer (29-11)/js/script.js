@@ -46,23 +46,16 @@ function getTimeInLoop(){
 
     // Contenuto timer
     const thisDate = new Date();
-    let dateDay = thisDate.getDay();
-    let dateMonth = thisDate.getMonth();
-    let dateYear = thisDate.getFullYear();
     let dateHour = thisDate.getHours();
     let dateMinute = thisDate.getMinutes();
     let dateSecond = thisDate.getSeconds();
 
     // Fix per i numeri inferiori a 10 (esempio:   10:5 -> 10:05 )
-    dateDay = (dateDay < 10) ? dateDay = `0${dateDay}` : dateDay = dateDay;
-    dateMonth = (dateMonth < 10) ? dateMonth = `0${dateMonth}` : dateMonth = dateMonth;
-    dateYear = (dateYear < 10) ? dateYear = `0${dateYear}` : dateYear = dateYear;
     dateHour = (dateHour < 10) ? dateHour = `0${dateHour}` : dateHour = dateHour;
     dateMinute = (dateMinute < 10) ? dateMinute = `0${dateMinute}` : dateMinute = dateMinute;
     dateSecond = (dateSecond < 10) ? dateSecond = `0${dateSecond}` : dateSecond = dateSecond;
 
     // Contenuto degli span
-    document.querySelector('.day_text').innerText =  `${dateDay} ${dateMonth} ${dateYear}`;
     document.querySelector('.minute_text').innerText = `${dateHour} : ${dateMinute} : ${dateSecond}`;
     
     setTimeout(function(){getTimeInLoop()}, 1000);
