@@ -9,13 +9,39 @@ console.log(modelsNumbers);
  const sunGlasses = modelsNumbers.map((element, index, array) => {
      console.log(index);
     return{
-        brand: sunGlassesBrands[Math.floor(Math.random() * 4) + 1],
+        brand: sunGlassesBrands[Math.floor(Math.random() * 5) + 0],
         model: `Model ${modelsNumbers[index]}`,
         price: Math.floor(Math.random() * 400 + 1) + 100     
     }; 
 });
 
 console.log(sunGlasses);
+
+const rayBanGlasses = sunGlasses.filter((element, index, array) => {
+    const {brand} = element;
+    return brand === 'Ray-Ban';
+});
+const armaniGlasses = sunGlasses.filter((element, index, array) => {
+    const {brand} = element;
+    return brand === 'Armani';
+});
+const polaroidGlasses = sunGlasses.filter((element, index, array) => {
+    const {brand} = element;
+    return brand === 'Polaroid';
+});
+const oakleyGlasses = sunGlasses.filter((element, index, array) => {
+    const {brand} = element;
+    return brand === 'Oakley';
+});
+const vonZipperGlasses = sunGlasses.filter((element, index, array) => {
+    const {brand} = element;
+    return brand === 'VonZipper';
+});
+
+const glassesArraysList = [];
+glassesArraysList.push(rayBanGlasses, armaniGlasses, polaroidGlasses, oakleyGlasses, vonZipperGlasses);
+
+console.log(glassesArraysList);
 
 // Variabile body
 const pageBody = document.querySelector('body');
