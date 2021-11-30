@@ -74,14 +74,20 @@ let activeObject = 0;
 // Contatore per testo main
 let myCounter = 0;
 
+// Contenuto timer iniziale
+timerMinutes.innerText = `${new Date().getHours()} : ${new Date().getMinutes()} : ${new Date().getSeconds()}`;
 
+// Index random iniziale
+const myIndexRandom = Math.floor(Math.random() * glassesArraysList.length) + 0;
 
-// Contenuto object wrapper
-objectContainer.innerHTML = `<span class="object_text">
-Brand: ${glassesArraysList[activeObject][activeObject].brand}<br>
-Model: ${glassesArraysList[activeObject][activeObject].model}<br>
-Price: ${glassesArraysList[activeObject][activeObject].price}         
-</span>`;
+// Contenuto object wrapper iniziale
+objectContainer.innerHTML = `
+    <span class="object_text">
+        Brand: ${glassesArraysList[myIndexRandom][Math.floor(Math.random() * glassesArraysList[myIndexRandom].length) + 0].brand}<br>
+        Model: ${glassesArraysList[myIndexRandom][Math.floor(Math.random() * glassesArraysList[myIndexRandom].length) + 0].model}<br>
+        Price: ${glassesArraysList[myIndexRandom][Math.floor(Math.random() * glassesArraysList[myIndexRandom].length) + 0].price}         
+    </span>
+`;
 
 // Inserimento in pagina header, timer container, main, object container, timer e footer
 pageBody.append(pageHeader, pageMain, pageFooter);
@@ -97,32 +103,11 @@ pageMain.appendChild(objectContainer);
 
 
 
-// Richiamo alla funzione che triggera il timer
-getTimeInLoop(activeObject, myCounter, glassesArraysList);
+// Funzione che triggera il timer
+setInterval(function() {
 
+    myCounter++;
 
-
-// Funzione che genera un array ordinato di numeri da 1 a 100
-function getHundredNumbers(arrayLength){
-    const numbersArray = []
-    for(let i = 0; i < arrayLength; i++){
-        numbersArray.push(i);
-    }
-    return (numbersArray);
-}
-
-
-
-// Funzione che triggera il timer e cambia activeObject ogni 3s
-// Questa funzione si richiama da sola creando un loop ma con il ritardo di 1s
-// Ogni secondo, riempio l'innerText del timer con l'ora attuale, quindi
-// Ogni secondo che passa l'innerText con l'orario aumenterà di un secondo
-// Stesso discorso per gli oggetti visualizzati, cambia l'attuale ogni 3s
-function getTimeInLoop(thisActive, thisCounter, thisArray){
-
-    
-    
-    
     // Contenuto timer
     const thisDate = new Date();
     let dateHour = thisDate.getHours();
@@ -137,22 +122,32 @@ function getTimeInLoop(thisActive, thisCounter, thisArray){
     // Contenuto degli span
     document.querySelector('.minute_text').innerText = `${dateHour} : ${dateMinute} : ${dateSecond}`;
     
-    if(thisCounter % 3 === 0){
+    if(myCounter % 3 === 0){
          
-        console.log(thisActive);
+        console.log(activeObject);
         
-        const {brand, name, price} = thisArray[thisActive];
+        const {brand, name, price} = glassesArraysList[activeObject];
 
-        const indexRandom = Math.floor(Math.random() * thisArray.length) + 0;
+        const indexRandom = Math.floor(Math.random() * glassesArraysList.length) + 0;
                                                                                                                                                               
         document.querySelector('.object_wrapper').innerHTML = `<span class="object_text">
-            Brand: ${thisArray[indexRandom][Math.floor(Math.random() * thisArray[indexRandom].length) + 0].brand}<br>
-            Model: ${thisArray[indexRandom][Math.floor(Math.random() * thisArray[indexRandom].length) + 0].model}<br>
-            Price: ${thisArray[indexRandom][Math.floor(Math.random() * thisArray[indexRandom].length) + 0].price}         
+            Brand: ${glassesArraysList[indexRandom][Math.floor(Math.random() * glassesArraysList[indexRandom].length) + 0].brand}<br>
+            Model: ${glassesArraysList[indexRandom][Math.floor(Math.random() * glassesArraysList[indexRandom].length) + 0].model}<br>
+            Price: ${glassesArraysList[indexRandom][Math.floor(Math.random() * glassesArraysList[indexRandom].length) + 0].price}         
         </span>`;
     }
+}, 1000);
 
-    thisCounter++;
-   
-    setTimeout(function(){getTimeInLoop(thisActive, thisCounter, thisArray)}, 1000);
+
+
+// Funzione che genera un array ordinato di numeri da 1 a 100
+function getHundredNumbers(arrayLength){
+    const numbersArray = []
+    for(let i = 0; i < arrayLength; i++){
+        numbersArray.push(i);
+    }
+    return (numbersArray);
 }
+
+
+
