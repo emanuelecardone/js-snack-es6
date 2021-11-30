@@ -96,6 +96,7 @@ pageMain.appendChild(objectContainer);
 
 
 
+
 // Richiamo alla funzione che triggera il timer
 getTimeInLoop(activeObject, myCounter, glassesArraysList);
 
@@ -112,10 +113,11 @@ function getHundredNumbers(arrayLength){
 
 
 
-// Funzione che triggera il timer e cambia activeObject ogni 5s
+// Funzione che triggera il timer e cambia activeObject ogni 3s
 // Questa funzione si richiama da sola creando un loop ma con il ritardo di 1s
 // Ogni secondo, riempio l'innerText del timer con l'ora attuale, quindi
 // Ogni secondo che passa l'innerText con l'orario aumenterà di un secondo
+// Stesso discorso per gli oggetti visualizzati, cambia l'attuale ogni 3s
 function getTimeInLoop(thisActive, thisCounter, thisArray){
 
     
@@ -144,9 +146,9 @@ function getTimeInLoop(thisActive, thisCounter, thisArray){
         const indexRandom = Math.floor(Math.random() * thisArray.length) + 0;
                                                                                                                                                               
         document.querySelector('.object_wrapper').innerHTML = `<span class="object_text">
-        Brand: ${thisArray[indexRandom][Math.floor(Math.random() * thisArray[indexRandom].length) + 0].brand}<br>
-        Model: ${thisArray[indexRandom][Math.floor(Math.random() * thisArray[indexRandom].length) + 0].model}<br>
-        Price: ${thisArray[indexRandom][Math.floor(Math.random() * thisArray[indexRandom].length) + 0].price}         
+            Brand: ${thisArray[indexRandom][Math.floor(Math.random() * thisArray[indexRandom].length) + 0].brand}<br>
+            Model: ${thisArray[indexRandom][Math.floor(Math.random() * thisArray[indexRandom].length) + 0].model}<br>
+            Price: ${thisArray[indexRandom][Math.floor(Math.random() * thisArray[indexRandom].length) + 0].price}         
         </span>`;
     }
 

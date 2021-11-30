@@ -377,7 +377,7 @@ sliderLeftArrow.addEventListener('click', function(){
     }
     document.getElementsByClassName('info_text')[activeObject].classList.remove('active');
 
-    activeObject = (activeObject > 0) ? activeObject - 1 : activeObject = solarSystem.length - 1;
+    activeObject = (activeObject > 0) ? activeObject - 1 : solarSystem.length - 1;
     
     document.getElementsByClassName('big_img')[activeObject].classList.add('active');
     document.getElementsByClassName('thumb_img')[activeObject].classList.add('active');
@@ -400,7 +400,7 @@ sliderRightArrow.addEventListener('click', function(){
     }
     document.getElementsByClassName('info_text')[activeObject].classList.remove('active');
 
-    activeObject = (activeObject < solarSystem.length - 1) ? activeObject + 1 : activeObject = 0;
+    activeObject = (activeObject < solarSystem.length - 1) ? activeObject + 1 : 0;
     
     document.getElementsByClassName('big_img')[activeObject].classList.add('active');
     document.getElementsByClassName('thumb_img')[activeObject].classList.add('active');
@@ -483,7 +483,6 @@ function fillingContainersUp(ListOfPlanets, thisObject){
         currentPlanetTitle.innerText = name;
         planetTitleContainer.appendChild(currentPlanetTitle);
             
-        console.log(document.getElementsByClassName('main_planet_title')[i]);
     
         // AGGIUNTA KEYS NELLA UL 
         
